@@ -1,0 +1,44 @@
+body{
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+#overlay {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('./src/images/startscreenBG.jpg'); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -70%);
+    transform: translate(-50%, -70%);
+}
+
+#startButton{
+    margin-top: 15vh;
+    padding: 15px 25px;
+    font-size: 18px;
+    border: none;
+    background-color: #3c3c3c;
+    color: #a0a0a0;
+}
+
+#startButton:hover{
+    background-color: #7c7c7c;
+    color: #ffffff;
+}
+
+#footer{
+    background-color: rgba(256,256,256, .4);
+    width: 100vw;
+    padding: 10px;
+    bottom: 0;
+    position: fixed;
+}

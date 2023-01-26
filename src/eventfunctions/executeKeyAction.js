@@ -10,7 +10,7 @@ export function keyDownAction(event) {
 
         const ballRadius = 2;
         const ballGeometry = new THREE.SphereGeometry(ballRadius, 16, 16);
-        const ball = new THREE.Mesh(ballGeometry, new THREE.MeshLambertMaterial({color: 0xff0000}));
+        const ball = new THREE.Mesh(ballGeometry, new THREE.MeshLambertMaterial({color: "#" + Math.floor(Math.random()*16777215).toString(16)}));
 
         ball.position.set(window.camera.position.x, window.camera.position.y, window.camera.position.z);
         ball.castShadow = true;

@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <title>CGA WS2022</title>
   <link rel="shortcut icon" href="#"/>
+  <link rel="stylesheet" href="stylesheet.css">
 </head>
-<body style="margin:0; overflow:hidden">
+<body style="margin:0; overflow:hidden;">
 <div id="3d_content"></div>
 <script type="importmap">
   {
@@ -21,10 +22,16 @@
   }
 
 </script>
-<script type="module" src="srcain.js"></script>
+<script type="module" src="src/main.js"></script>
 <!-- Overlay for initial interaction (audio context creation precondition) -->
-<div id="overlay" style="transform: translate(50%, 100%);">
-  <button id="startButton">CLICK TO START</button>
+<div id="overlay">
+  <div  class="center">
+    <button id="startButton">Simulator starten</button>
+  </div>
+  <div id="footer">
+    <span>HAW Hamburg - Computergrafik & Animation</span>
+    <span style="float: right; margin-right: 20px;">Vincent Martin, Nick Schestag</span>
+  </div>
 </div>
 </body>
 </html>

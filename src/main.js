@@ -5,11 +5,9 @@ import * as TWEEN from 'tween';
 import Stats from 'stats';
 
 // Own modules
-import Television from './objects/Television.js';
-import TelevisionFromFile from './objects/TelevisionFromFile.js';
-import TableFromFile from './objects/TableFromFile.js';
-import PlantFromFile from './objects/PlantFromFile.js';
-import Floor from './objects/Floor.js';
+import HotelBody from './objects/HotelBody.js';
+import HotelBodyFromFile from './objects/HotelBodyFromFile.js';
+import GrassFromFile from './objects/GrassFromFile.js';
 import Physics from './physics/Physics.js';
 
 // Event functions
@@ -18,6 +16,7 @@ import {executeRaycast} from './eventfunctions/executeRaycast.js';
 import {keyDownAction, keyUpAction} from './eventfunctions/executeKeyAction.js';
 
 function main() {
+
 
   window.scene = new THREE.Scene();
   window.scene.add(new THREE.AxesHelper(50));
@@ -38,41 +37,33 @@ function main() {
 
   document.getElementById('3d_content').appendChild(window.renderer.domElement);
 
-  const television = new Television();
-  television.position.set(-30, 55.8, 0);
-  television.rotation.set(0, THREE.MathUtils.degToRad(10), 0);
-  television.addPhysics();
-  window.scene.add(television);
+  const hotelBody = new HotelBody();
+  hotelBody.position.set(0, 70, 0);
+  //hotelBody.position.set(60, 70, 0);
+  //hotelBody.rotation.set(0, THREE.MathUtils.degToRad(10), 0);
+  //hotelBody.addPhysics();
+  window.scene.add(hotelBody);
 
-  const televisionFromFile = new TelevisionFromFile();
-  televisionFromFile.position.set(30, 55.8, 0);
-  televisionFromFile.rotation.set(0, THREE.MathUtils.degToRad(-10), 0);
-  televisionFromFile.addPhysics();
-  window.scene.add(televisionFromFile);
+  const hotelBodyFromFile = new HotelBodyFromFile();
+  hotelBodyFromFile.position.set(0, 70, 0);
+  //hotelBodyFromFile.position.set(-60, 70, 0);
+  //hotelFromhotelBodyFromFileFile.addPhysics();
+  //window.scene.add(hotelBodyFromFile);
 
-  const tableFromFile = new TableFromFile();
-  tableFromFile.position.set(0, 0, 0);
-  tableFromFile.addPhysics();
-  window.scene.add(tableFromFile);
-
-  const plantFromFile = new PlantFromFile();
-  plantFromFile.position.set(-75, 75, -75);
-  plantFromFile.addPhysics();
-  plantFromFile.addSound();
-  window.scene.add(plantFromFile);
-
-  const floor = new Floor();
-  floor.position.set(0, 0, 0);
-  window.scene.add(floor);
+  const grassFromFile = new GrassFromFile();
+  grassFromFile.position.set(0, 50, -10);
+  //hotelFromFile.position.set(-60, 70, 0);
+  //hotelFromFile.addPhysics();
+ // window.scene.add(grassFromFile);
 
   const ambientLight = new THREE.AmbientLight(0xffffff);
   ambientLight.intensity = 0.5;
   window.scene.add(ambientLight);
 
   const spotLight = new THREE.SpotLight(0xffffff);
-  spotLight.position.set(100, 200, 200);
-  spotLight.intensity = 0.8;
-  spotLight.target = floor;
+  spotLight.position.set(100, 20, 200);
+  spotLight.intensity = 1.7;
+  spotLight.target = hotelBody;
   spotLight.angle = THREE.MathUtils.degToRad(30);
   spotLight.penumbra = 1.0;
   spotLight.castShadow = true;
@@ -104,19 +95,20 @@ function main() {
 
     const delta = clock.getDelta();
 
-    television.animations.forEach(function (animation) {
+    /*television.animations.forEach(function (animation) {
       animation.update(delta);
-    });
+    });*/
 
     TWEEN.update();
 
-    if (televisionFromFile.animationMixer !== null) {
+    /*if (televisionFromFile.animationMixer !== null) {
       televisionFromFile.animationMixer.update(delta);
-    }
+    }*/
 
     window.physics.update(delta);
 
     window.renderer.render(window.scene, window.camera);
+
 
     stats.end();
     requestAnimationFrame(mainLoop);
