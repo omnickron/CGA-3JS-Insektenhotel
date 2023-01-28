@@ -10,7 +10,7 @@ export default class SceneFromFile extends THREE.Group {
     this.load(this);
   }
 
-  load(thisHotel) {
+  load(thisSceneFromFile) {
 
     this.gltfLoader.load('src/models/scene/scene.gltf', function (gltf) {
 
@@ -22,8 +22,8 @@ export default class SceneFromFile extends THREE.Group {
         }
       });
       gltf.scene.position.set(0, -45, 0); // Shift loaded model down half its height
-      thisHotel.add(gltf.scene);
-      thisHotel.loadingDone = true;
+      thisSceneFromFile.add(gltf.scene);
+      thisSceneFromFile.loadingDone = true;
     });
   }
 

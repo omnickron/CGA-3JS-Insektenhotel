@@ -6,10 +6,17 @@ import Stats from 'stats';
 
 // Own modules
 import HotelBody from './objects/HotelBody.js';
+import PinesFromFile from './objects/PinesFromFile.js';
+import StrawFromFile from './objects/StrawFromFile.js';
+import GridTopFromFile from './objects/GridTopFromFile.js';
+import GridBottomFromFile from './objects/GridBottomFromFile.js';
 import HotelWoodBigStack from './objects/HotelWoodBigStack.js';
 import HotelWoodSmallStack from './objects/HotelWoodSmallStack.js';
 import HotelBodyFromFile from './objects/HotelBodyFromFile.js';
 import SceneFromFile from './objects/SceneFromFile.js';
+import SmallWoodLeftFromFile from './objects/SmallWoodLeftFromFile.js';
+import SmallWoodRightFromFile from './objects/SmallWoodRightFromFile.js';
+import BigWoodFromFile from './objects/BigWoodFromFile.js';
 import Physics from './physics/Physics.js';
 
 // Event functions
@@ -40,37 +47,92 @@ function main() {
 
   document.getElementById('3d_content').appendChild(window.renderer.domElement);
 
-  const hotelBody = new HotelBody();
-  hotelBody.scale.set(0.85, 0.85, 0.85);
-  hotelBody.updateMatrix();
-  hotelBody.position.set(75, 20.6, -5);
-  hotelBody.rotation.set(0, THREE.MathUtils.degToRad(-25), 0);
-  hotelBody.addPhysics();
-  window.scene.add(hotelBody);
+  const hotelRotation = [0, THREE.MathUtils.degToRad(-25), 0];
+  const hotelFromFileRotation = [0, THREE.MathUtils.degToRad(25), 0];
+
+
+//HOTEL FROM FILE
 
   const hotelBodyFromFile = new HotelBodyFromFile();
   hotelBodyFromFile.scale.set(0.85, 0.85, 0.85);
   hotelBodyFromFile.updateMatrix();
   hotelBodyFromFile.position.set(-15, 21.3, 10);
-  hotelBodyFromFile.rotation.set(0, THREE.MathUtils.degToRad(25), 0);
+  hotelBodyFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
   window.scene.add(hotelBodyFromFile);
 
+  const smallWoodLeftFromFile = new SmallWoodLeftFromFile();
+  smallWoodLeftFromFile.scale.set(0.85, 0.85, 0.85);
+  smallWoodLeftFromFile.position.set(-15, 21.3, 10);
+  smallWoodLeftFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  window.scene.add(smallWoodLeftFromFile);
+
+  const smallWoodRightFromFile = new SmallWoodRightFromFile();
+  smallWoodRightFromFile.scale.set(0.85, 0.85, 0.85);
+  smallWoodRightFromFile.position.set(-15, 21.3, 10);
+  smallWoodRightFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  window.scene.add(smallWoodRightFromFile);
+
+  const gridBottomFromFile = new GridBottomFromFile();
+  gridBottomFromFile.scale.set(0.85, 0.85, 0.85);
+  gridBottomFromFile.position.set(-15, 21.3, 10);
+  gridBottomFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  window.scene.add(gridBottomFromFile);
+
+  const gridTopFromFile = new GridTopFromFile();
+  gridTopFromFile.scale.set(0.85, 0.85, 0.85);
+  gridTopFromFile.position.set(-15, 21.3, 10);
+  gridTopFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  window.scene.add(gridTopFromFile);
+
+  const strawFromFile = new StrawFromFile();
+  strawFromFile.scale.set(0.85, 0.85, 0.85);
+  strawFromFile.position.set(-15, 21.3, 10);
+  strawFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  window.scene.add(strawFromFile);
+
+  const pinesFromFile = new PinesFromFile();
+  pinesFromFile.scale.set(0.85, 0.85, 0.85);
+  pinesFromFile.position.set(-15, 21.3, 10);
+  pinesFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  window.scene.add(pinesFromFile);
+
+
+
+  const bigWoodFromFile = new BigWoodFromFile();
+  bigWoodFromFile.scale.set(0.85, 0.85, 0.85);
+  bigWoodFromFile.position.set(-15, 21.3, 10);
+  bigWoodFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  window.scene.add(bigWoodFromFile);
+
+  //HOTEL
+
+  const hotelBody = new HotelBody();
+  hotelBody.scale.set(0.85, 0.85, 0.85);
+  hotelBody.updateMatrix();
+  hotelBody.position.set(70, 20.6, -5);
+  hotelBody.rotation.set(hotelRotation[0], hotelRotation[1], hotelRotation[2]);
+  hotelBody.addPhysics();
+  window.scene.add(hotelBody);
+
+  const bigWoodStack = new HotelWoodBigStack();
+  bigWoodStack.position.set(0, 5, 0);
+  bigWoodStack.rotation.set(hotelRotation[0], hotelRotation[1], hotelRotation[2]);
+  window.scene.add(bigWoodStack);
+
+  const smallWoodStackLeft = new HotelWoodSmallStack();
+  smallWoodStackLeft.position.set(47.5, -18, -5);
+  smallWoodStackLeft.rotation.set(hotelRotation[0], hotelRotation[1], hotelRotation[2]);
+  window.scene.add(smallWoodStackLeft);
+  const smallWoodStackRight = new HotelWoodSmallStack();
+  smallWoodStackRight.position.set(70.2, -18, 6);
+  smallWoodStackRight.rotation.set(hotelRotation[0], hotelRotation[1]+THREE.MathUtils.degToRad(180), hotelRotation[2]);
+  window.scene.add(smallWoodStackRight);
+
+  //SCENE
   const sceneFromFile = new SceneFromFile();
   sceneFromFile.position.set(0, 140, 0);
   sceneFromFile.scale.set(4,4,4);
   window.scene.add(sceneFromFile);
-
-  const bigWoodStack = new HotelWoodBigStack();
-  bigWoodStack.position.set(0, 5, 0);
-  //bigWoodStack.rotation.set(0, THREE.MathUtils.degToRad(20), 0);
-  //window.scene.add(bigWoodStack);
-
-  const smallWoodStack = new HotelWoodSmallStack();
-  smallWoodStack.position.set(0, 50, 0);
-  //smallWoodStack.rotation.set(0, THREE.MathUtils.degToRad(20), 0);
-  window.scene.add(smallWoodStack);
-
-
 
   //LIGHT
 
