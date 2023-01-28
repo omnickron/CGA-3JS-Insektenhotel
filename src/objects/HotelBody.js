@@ -10,10 +10,6 @@ export default class HotelBody extends THREE.Group {
 
   constructor() {
     super();
-
-    this.animations = [];
-    this.blackTexture = null;
-    this.noiseTexture = null;
     this.movieTexture = null;
     this.addParts();
   }
@@ -86,125 +82,132 @@ export default class HotelBody extends THREE.Group {
     frontWall.rotation.set(0,THREE.MathUtils.degToRad(90),0);
     this.add(frontWall);
 
-const positionsRight = [
-//1.8   46   22
-0, 0, 0,     // 0
-1.8, 0, 0,    // 1
-0, 0, 23, // 2
-1.8, 0, 23,  // 3
-0, 43.7, 0,     // 4
-1.8, 46, 0,    // 5
-0, 43.7, 23, // 6
-1.8, 46, 23,  // 7
-];
-const positionsLeft = [
-//1.8   46   22
-0, 0, 0,     // 0
-1.8, 0, 0,    // 1
-0, 0, 23, // 2
-1.8, 0, 23,  // 3
-0, 46, 0,     // 4
-1.8, 43.7, 0,    // 5
-0, 46, 23, // 6
-1.8, 43.7, 23,  // 7
-];
-const indices = [
-0,1,2,
-1,3,2,
-1,5,7,
-7,3,1,
-0,6,4,
-0,2,6,
-4,6,7,
-5,4,7,
-0,4,5,
-1,0,5,
-7,6,2,
-7,2,3
+    const positionsRight = [
+    //1.8   46   22
+    0, 0, 0,     // 0
+    1.8, 0, 0,    // 1
+    0, 0, 23, // 2
+    1.8, 0, 23,  // 3
+    0, 43.7, 0,     // 4
+    1.8, 46, 0,    // 5
+    0, 43.7, 23, // 6
+    1.8, 46, 23,  // 7
+    ];
+    const positionsLeft = [
+    //1.8   46   22
+    0, 0, 0,     // 0
+    1.8, 0, 0,    // 1
+    0, 0, 23, // 2
+    1.8, 0, 23,  // 3
+    0, 46, 0,     // 4
+    1.8, 43.7, 0,    // 5
+    0, 46, 23, // 6
+    1.8, 43.7, 23,  // 7
+    ];
+    const indices = [
+    0,1,2,
+    1,3,2,
+    1,5,7,
+    7,3,1,
+    0,6,4,
+    0,2,6,
+    4,6,7,
+    5,4,7,
+    0,4,5,
+    1,0,5,
+    7,6,2,
+    7,2,3
 
-];
+    ];
 
-const customRoofGeometryRight = new THREE.BufferGeometry();
-customRoofGeometryRight.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positionsRight), 3));
-customRoofGeometryRight.setIndex(indices);
-customRoofGeometryRight.computeVertexNormals();
-const roofCustomRight = new THREE.Mesh(customRoofGeometryRight, woodMaterial);
-roofCustomRight.position.set(17.6, -33, -2);
-roofCustomRight.rotation.set(0,0,THREE.MathUtils.degToRad(37.4));
-roofCustomRight.castShadow = true;
-this.add(roofCustomRight);
+    const customRoofGeometryRight = new THREE.BufferGeometry();
+    customRoofGeometryRight.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positionsRight), 3));
+    customRoofGeometryRight.setIndex(indices);
+    customRoofGeometryRight.computeVertexNormals();
+    const roofCustomRight = new THREE.Mesh(customRoofGeometryRight, woodMaterial);
+    roofCustomRight.position.set(17.6, -33, -2);
+    roofCustomRight.rotation.set(0,0,THREE.MathUtils.degToRad(37.4));
+    roofCustomRight.castShadow = true;
+    this.add(roofCustomRight);
 
-const customRoofGeometryLeft = new THREE.BufferGeometry();
-customRoofGeometryLeft.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positionsLeft), 3));
-customRoofGeometryLeft.setIndex(indices);
-customRoofGeometryLeft.computeVertexNormals();
-const roofCustomLeft = new THREE.Mesh(customRoofGeometryLeft, woodMaterial);
-roofCustomLeft.position.set(-36.9, -31.9, -2);
-roofCustomLeft.rotation.set(0,0,THREE.MathUtils.degToRad(-37.4));
-roofCustomLeft.castShadow = true;
-this.add(roofCustomLeft);
+    const customRoofGeometryLeft = new THREE.BufferGeometry();
+    customRoofGeometryLeft.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positionsLeft), 3));
+    customRoofGeometryLeft.setIndex(indices);
+    customRoofGeometryLeft.computeVertexNormals();
+    const roofCustomLeft = new THREE.Mesh(customRoofGeometryLeft, woodMaterial);
+    roofCustomLeft.position.set(-36.9, -31.9, -2);
+    roofCustomLeft.rotation.set(0,0,THREE.MathUtils.degToRad(-37.4));
+    roofCustomLeft.castShadow = true;
+    this.add(roofCustomLeft);
 
-const backWallPosition = [
-0, -0.4, 0,     // 0
-0, 44.7, 0,    // 1
--19, 69.7, 0, // 2
--37.8, 44.7, 0,  // 3
--37.8, -0.4, 0,  //4
-0, -0.4, -1.8,     // 5
-0, 44.7, -1.8,    // 6
--19, 69.7, -1.8, // 7
--37.8, 44.7, -1.8,  // 8
--37.8, -0.4, -1.8   //9
-];
-const backWallIndices = [
-0,1,4,
-1,3,4,
-1,2,3,
-6,5,9,
-8,6,9,
-8,7,6,
-6,1,0,
-6,0,5,
-7,2,1,
-7,1,6,
-2,7,3,
-7,8,3,
-3,8,9,
-3,9,4,
-9,5,0,
-4,9,0
-];
+    const backWallPosition = [
+    0, -0.4, 0,     // 0
+    0, 44.7, 0,    // 1
+    -19, 69.7, 0, // 2
+    -37.8, 44.7, 0,  // 3
+    -37.8, -0.4, 0,  //4
+    0, -0.4, -1.8,     // 5
+    0, 44.7, -1.8,    // 6
+    -19, 69.7, -1.8, // 7
+    -37.8, 44.7, -1.8,  // 8
+    -37.8, -0.4, -1.8   //9
+    ];
+    const backWallIndices = [
+    0,1,4,
+    1,3,4,
+    1,2,3,
+    6,5,9,
+    8,6,9,
+    8,7,6,
+    6,1,0,
+    6,0,5,
+    7,2,1,
+    7,1,6,
+    2,7,3,
+    7,8,3,
+    3,8,9,
+    3,9,4,
+    9,5,0,
+    4,9,0
+    ];
 
-const backWallGeometry = new THREE.BufferGeometry();
-backWallGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(backWallPosition), 3));
-backWallGeometry.setIndex(backWallIndices);
-backWallGeometry.computeVertexNormals();
-const backWall = new THREE.Mesh(backWallGeometry, woodMaterial);
-backWall.position.set(10, -68, -0.2);
-//backWall.rotation.set(0,0,THREE.MathUtils.degToRad(-37.4));
-backWall.castShadow = true;
-this.add(backWall);
+    const backWallGeometry = new THREE.BufferGeometry();
+    backWallGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(backWallPosition), 3));
+    backWallGeometry.setIndex(backWallIndices);
+    backWallGeometry.computeVertexNormals();
+    const backWall = new THREE.Mesh(backWallGeometry, woodMaterial);
+    backWall.position.set(10, -68, -0.2);
+    //backWall.rotation.set(0,0,THREE.MathUtils.degToRad(-37.4));
+    backWall.castShadow = true;
+    this.add(backWall);
 }
 
-addPhysics() {
-const positions = [
-[25.0, 18.2, 16.5],     // 0
-[-25.0, 18.2, 16.5],    // 1
-[-25.0, -16.8, 16.5],   // 2
-[25.0, -16.8, 16.5],    // 3
-[16.8, 11.0, -18.0],    // 4
-[-16.8, 11.0, -18.0],   // 5
-[-16.8, -16.8, -18.0],  // 6
-[16.8, -16.8, -18.0]    // 7
-];
-const indices = [
-[0, 1, 2, 3],  // front
-[1, 5, 6, 2],  // left
-[4, 0, 3, 7],  // right
-[4, 5, 1, 0],  // top
-[3, 2, 6, 7],  // bottom
-[5, 4, 7, 6]   // back
-];
-window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
-}
+  addPhysics() {
+      //TODO: THIS IS VERY WRONG
+      const positions = [
+      [9,-44,20],     // 0
+      [9,3.5,0],    // 1
+      [9,28.5,0],   // 2
+      [-27,3.5,0],    // 3
+      [-27,-44,0],    // 4
+      [9,-44,20],     // 5
+      [9,3.52,20],    // 6
+      [9,28.5,20],   // 7
+      [-27,3.5,20],    // 8
+      [-27,-44,20],    // 9
+
+      ];
+      const indices = [
+      [0, 1, 3, 4],  // front
+      [5, 6, 8, 9],  // left
+      [0, 1, 6, 5],  // right
+      [9, 8, 3, 4],  // top
+      [0, 5, 4, 9],  // bottom
+      [1, 2, 7, 6],
+        [7, 2, 3, 8],
+        [7,8,6],
+        [1,2,3]// back
+      ];
+      window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
+  }
 }

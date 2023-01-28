@@ -6,8 +6,10 @@ import Stats from 'stats';
 
 // Own modules
 import HotelBody from './objects/HotelBody.js';
+import HotelWoodBigStack from './objects/HotelWoodBigStack.js';
+import HotelWoodSmallStack from './objects/HotelWoodSmallStack.js';
 import HotelBodyFromFile from './objects/HotelBodyFromFile.js';
-import GrassFromFile from './objects/GrassFromFile.js';
+import SceneFromFile from './objects/SceneFromFile.js';
 import Physics from './physics/Physics.js';
 
 // Event functions
@@ -22,11 +24,12 @@ function main() {
   window.scene.add(new THREE.AxesHelper(50));
 
   window.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-  window.camera.position.set(-100, 300, 300);
+  window.camera.position.set(0, 100, 300);
 
   window.renderer = new THREE.WebGLRenderer({antialias: true});
   window.renderer.setSize(window.innerWidth, window.innerHeight);
   window.renderer.setClearColor(0xffffff);
+  window.renderer.outputEncoding = THREE.sRGBEncoding;
   window.renderer.shadowMap.enabled = true;
 
   window.physics = new Physics();
@@ -38,31 +41,46 @@ function main() {
   document.getElementById('3d_content').appendChild(window.renderer.domElement);
 
   const hotelBody = new HotelBody();
-  hotelBody.position.set(0, 70, 0);
-  //hotelBody.position.set(60, 70, 0);
-  //hotelBody.rotation.set(0, THREE.MathUtils.degToRad(10), 0);
-  //hotelBody.addPhysics();
+  hotelBody.scale.set(0.85, 0.85, 0.85);
+  hotelBody.updateMatrix();
+  hotelBody.position.set(75, 20.6, -5);
+  hotelBody.rotation.set(0, THREE.MathUtils.degToRad(-25), 0);
+  hotelBody.addPhysics();
   window.scene.add(hotelBody);
 
   const hotelBodyFromFile = new HotelBodyFromFile();
-  hotelBodyFromFile.position.set(0, 70, 0);
-  //hotelBodyFromFile.position.set(-60, 70, 0);
-  //hotelFromhotelBodyFromFileFile.addPhysics();
-  //window.scene.add(hotelBodyFromFile);
+  hotelBodyFromFile.scale.set(0.85, 0.85, 0.85);
+  hotelBodyFromFile.updateMatrix();
+  hotelBodyFromFile.position.set(-15, 21.3, 10);
+  hotelBodyFromFile.rotation.set(0, THREE.MathUtils.degToRad(25), 0);
+  window.scene.add(hotelBodyFromFile);
 
-  const grassFromFile = new GrassFromFile();
-  grassFromFile.position.set(0, 50, -10);
-  //hotelFromFile.position.set(-60, 70, 0);
-  //hotelFromFile.addPhysics();
- // window.scene.add(grassFromFile);
+  const sceneFromFile = new SceneFromFile();
+  sceneFromFile.position.set(0, 140, 0);
+  sceneFromFile.scale.set(4,4,4);
+  window.scene.add(sceneFromFile);
+
+  const bigWoodStack = new HotelWoodBigStack();
+  bigWoodStack.position.set(0, 5, 0);
+  //bigWoodStack.rotation.set(0, THREE.MathUtils.degToRad(20), 0);
+  //window.scene.add(bigWoodStack);
+
+  const smallWoodStack = new HotelWoodSmallStack();
+  smallWoodStack.position.set(0, 50, 0);
+  //smallWoodStack.rotation.set(0, THREE.MathUtils.degToRad(20), 0);
+  window.scene.add(smallWoodStack);
+
+
+
+  //LIGHT
 
   const ambientLight = new THREE.AmbientLight(0xffffff);
-  ambientLight.intensity = 0.5;
+  ambientLight.intensity = 0.3;
   window.scene.add(ambientLight);
 
   const spotLight = new THREE.SpotLight(0xffffff);
   spotLight.position.set(100, 20, 200);
-  spotLight.intensity = 1.7;
+  spotLight.intensity = 0.7;
   spotLight.target = hotelBody;
   spotLight.angle = THREE.MathUtils.degToRad(30);
   spotLight.penumbra = 1.0;
@@ -90,9 +108,7 @@ function main() {
   const clock = new THREE.Clock();
 
   function mainLoop() {
-
     stats.begin();
-
     const delta = clock.getDelta();
 
     /*television.animations.forEach(function (animation) {
@@ -106,6 +122,7 @@ function main() {
     }*/
 
     window.physics.update(delta);
+
 
     window.renderer.render(window.scene, window.camera);
 
