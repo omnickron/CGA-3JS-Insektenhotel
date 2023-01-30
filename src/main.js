@@ -59,16 +59,19 @@ function main() {
   hotelBodyFromFile.updateMatrix();
   hotelBodyFromFile.position.set(-15, 21.3, 10);
   hotelBodyFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  hotelBodyFromFile.addPhysics();
 
   const smallWoodLeftFromFile = new SmallWoodLeftFromFile();
   smallWoodLeftFromFile.scale.set(0.85, 0.85, 0.85);
   smallWoodLeftFromFile.position.set(-15, 21.3, 10);
   smallWoodLeftFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  smallWoodLeftFromFile.addPhysics();
 
   const smallWoodRightFromFile = new SmallWoodRightFromFile();
   smallWoodRightFromFile.scale.set(0.85, 0.85, 0.85);
   smallWoodRightFromFile.position.set(-15, 21.3, 10);
   smallWoodRightFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  smallWoodRightFromFile.addPhysics();
 
   const gridBottomFromFile = new GridBottomFromFile();
   gridBottomFromFile.scale.set(0.85, 0.85, 0.85);
@@ -89,6 +92,7 @@ function main() {
   pinesFromFile.scale.set(0.85, 0.85, 0.85);
   pinesFromFile.position.set(-15, 21.3, 10);
   pinesFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  pinesFromFile.addPhysics();
 
 
 
@@ -96,6 +100,7 @@ function main() {
   bigWoodFromFile.scale.set(0.85, 0.85, 0.85);
   bigWoodFromFile.position.set(-15, 21.3, 10);
   bigWoodFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  bigWoodFromFile.addPhysics();
 
   //HOTEL
 
@@ -109,17 +114,22 @@ function main() {
   const bigWoodStack = new HotelWoodBigStack();
   bigWoodStack.position.set(50, -1.2, -5);
   bigWoodStack.rotation.set(hotelRotation[0], hotelRotation[1], hotelRotation[2]);
+  bigWoodStack.addPhysics();
 
   const smallWoodStackLeft = new HotelWoodSmallStack();
   smallWoodStackLeft.position.set(47.5, -18, -5);
   smallWoodStackLeft.rotation.set(hotelRotation[0], hotelRotation[1], hotelRotation[2]);
+  smallWoodStackLeft.addPhysics();
+
   const smallWoodStackRight = new HotelWoodSmallStack();
   smallWoodStackRight.position.set(70.2, -18, 6);
   smallWoodStackRight.rotation.set(hotelRotation[0], hotelRotation[1]+THREE.MathUtils.degToRad(180), hotelRotation[2]);
+  smallWoodStackRight.addPhysics();
 
   const pineStack = new HotelPineStack();
   pineStack.position.set(50, -34.4, 0);
   pineStack.rotation.set(hotelRotation[0], hotelRotation[1], hotelRotation[2]);
+  pineStack.addPhysics();
 
 
   //ADD HOTEL FROM FILE COMPONENTS
@@ -134,7 +144,7 @@ function main() {
 
 
   //ADD HOTEL COMPONENTS
-  window.scene.add(hotelBody);
+  //window.scene.add(hotelBody);
   window.scene.add(bigWoodStack);
   window.scene.add(smallWoodStackLeft);
   window.scene.add(smallWoodStackRight);

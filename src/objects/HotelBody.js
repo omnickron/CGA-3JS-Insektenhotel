@@ -177,36 +177,34 @@ export default class HotelBody extends THREE.Group {
     backWallGeometry.computeVertexNormals();
     const backWall = new THREE.Mesh(backWallGeometry, woodMaterial);
     backWall.position.set(10, -68, -0.2);
-    //backWall.rotation.set(0,0,THREE.MathUtils.degToRad(-37.4));
     backWall.castShadow = true;
     this.add(backWall);
 }
 
   addPhysics() {
-      //TODO: THIS IS VERY WRONG
       const positions = [
-      [9,-44,20],     // 0
-      [9,3.5,0],    // 1
-      [9,28.5,0],   // 2
-      [-27,3.5,0],    // 3
-      [-27,-44,0],    // 4
-      [9,-44,20],     // 5
-      [9,3.52,20],    // 6
-      [9,28.5,20],   // 7
-      [-27,3.5,20],    // 8
-      [-27,-44,20],    // 9
+      [8.5,-58,-1.75],     // 0
+      [8.5,-17,-1.75],    // 1
+      [-7.3 ,4.5,-1.75],   //
+      [-24,-17,-1.75],    // 3
+      [-24,-58,-1.75],    // 4
+      [8.5,-58,17.5],     // 5
+      [8.5,-17,17.5],    // 6
+      [-7.3 ,4.5,17.5],   // 7
+      [-24,-17,17.5],    // 8
+      [-24,-58,17.5],    // 9
 
       ];
       const indices = [
-      [0, 1, 3, 4],  // front
-      [5, 6, 8, 9],  // left
-      [0, 1, 6, 5],  // right
-      [9, 8, 3, 4],  // top
-      [0, 5, 4, 9],  // bottom
+      [0, 1, 3, 4],
+      [5, 6, 8, 9],
+      [0, 1, 6, 5],
+      [9, 8, 3, 4],
+      [0, 5, 4, 9],
       [1, 2, 7, 6],
         [7, 2, 3, 8],
         [7,8,6],
-        [1,2,3]// back
+        [1,2,3]
       ];
       window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
   }

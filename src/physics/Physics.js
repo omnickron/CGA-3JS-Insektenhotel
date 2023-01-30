@@ -3,7 +3,7 @@ import CannonDebugger from '../../../../lib/cannon-es-debugger-1.0.0/dist/cannon
 
 export default class Physics {
 
-  constructor(debugRendering = false) {
+  constructor(debugRendering = true) {
 
     this.world = new CANNON.World();
 
@@ -25,7 +25,7 @@ export default class Physics {
     this.world.broadphase = new CANNON.NaiveBroadphase();
     this.stepSize = stepSize;
 
-    if (addFloor) {
+    if (!addFloor) {
       let floor = new CANNON.Body({
         shape: new CANNON.Plane(),
         mass: 0

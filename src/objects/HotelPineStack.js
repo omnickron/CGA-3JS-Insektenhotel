@@ -55,4 +55,28 @@ export default class HotelPineStack extends THREE.Group {
         pine8.rotation.set(THREE.MathUtils.degToRad(90), THREE.MathUtils.degToRad(30), THREE.MathUtils.degToRad(0));
         this.add(pine8);
     }
+
+    addPhysics() {
+        const positions = [
+            [22.3,-2,-9.5],     // 0
+            [18,13,-9.5],    // 1
+            [0,13,-9.5],    // 2
+            [-3.5,-2,-9.5],    // 3
+            [22.3,-2,3.5],     // 4
+            [18,13,0],    // 5
+            [0,13,0],    // 6
+            [-3.5,-2,3.5],    // 7
+
+        ];
+        const indices = [
+            [0, 1, 2, 3],
+            [4, 5, 6, 7],
+            [0, 1, 4, 5],
+            [3, 7, 6, 2],
+            [1, 2, 5, 6],
+            [0, 3, 4, 7],
+
+        ];
+        window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
+    }
 }

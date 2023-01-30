@@ -28,11 +28,26 @@ export default class SmallWoodLeftFromFile extends THREE.Group {
   }
 
   addPhysics() {
-    if (this.loadingDone === false) {
-      window.setTimeout(this.addPhysics.bind(this), 100);
-    } else {
-      //TODO: PHYSICS COLLIDER ANPASSEN
-      //window.physics.addCylinder(this, 5, 20, 10, 150, 12);
-    }
+    const positions = [
+      [6,-1,-7.5],     // 0
+      [6,11,-7.5],    // 1
+      [-2,11,-7.5],    // 2
+      [-2,-1,-7.5],    // 3
+      [6,-1,7.5],     // 4
+      [6,11,7.5],    // 5
+      [-2,11,7.5],    // 6
+      [-2,-1,7.5],    // 7
+
+    ];
+    const indices = [
+      [0, 1, 2, 3],
+      [4, 5, 6, 7],
+      [0, 1, 4, 5],
+      [3, 7, 6, 2],
+      [1, 2, 5, 6],
+      [0, 3, 4, 7],
+
+    ];
+    window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
   }
 }

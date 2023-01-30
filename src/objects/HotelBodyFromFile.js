@@ -28,11 +28,30 @@ export default class HotelBodyFromFile extends THREE.Group {
   }
 
   addPhysics() {
-    if (this.loadingDone === false) {
-      window.setTimeout(this.addPhysics.bind(this), 100);
-    } else {
-      //TODO: PHYSICS COLLIDER ANPASSEN
-      window.physics.addCylinder(this, 5, 20, 10, 150, 12);
-    }
+    const positions = [
+      [8.5,-58,-15],     // 0
+      [8.5,-17,-15],    // 1
+      [-7.3 ,4.5,-15],   //
+      [-24,-17,-15],    // 3
+      [-24,-58,-15],    // 4
+      [8.5,-58,17.5],     // 5
+      [8.5,-17,17.5],    // 6
+      [-7.3 ,4.5,17.5],   // 7
+      [-24,-17,17.5],    // 8
+      [-24,-58,17.5],    // 9
+
+    ];
+    const indices = [
+      [0, 1, 3, 4],
+      [5, 6, 8, 9],
+      [0, 1, 6, 5],
+      [9, 8, 3, 4],
+      [0, 5, 4, 9],
+      [1, 2, 7, 6],
+      [7, 2, 3, 8],
+      [7,8,6],
+      [1,2,3]
+    ];
+    window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
   }
 }

@@ -51,4 +51,28 @@ export default class HotelWoodBigStack extends THREE.Group {
         hotelWoodBig8.rotation.set(0,0, THREE.MathUtils.degToRad(20));
         this.add(hotelWoodBig8);
         }
+
+    addPhysics() {
+        const positions = [
+            [24.3,-4,-9.5],     // 0
+            [20.3,9.5,-9.5],    // 1
+            [3,9.5,-9.5],    // 2
+            [-3.5,-4,-9.5],    // 3
+            [24.3,-4,6],     // 4
+            [20.3,9.5,6],    // 5
+            [3,9.5,6],    // 6
+            [-3.5,-4,6],    // 7
+
+        ];
+        const indices = [
+            [0, 1, 2, 3],
+            [4, 5, 6, 7],
+            [0, 1, 4, 5],
+            [3, 7, 6, 2],
+            [1, 2, 5, 6],
+            [0, 3, 4, 7],
+
+        ];
+        window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
+    }
 }
