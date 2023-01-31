@@ -58,23 +58,23 @@ export default class HotelPineStack extends THREE.Group {
 
     addPhysics() {
         const positions = [
-            [22.3,-2,-9.5],     // 0
+            [22.3,-2,-9.5],     // 0x
             [18,13,-9.5],    // 1
             [0,13,-9.5],    // 2
-            [-3.5,-2,-9.5],    // 3
-            [22.3,-2,3.5],     // 4
+            [-3.5,-2,-9.5],    // 3x
+            [22.3,-2,3.5],     // 4x
             [18,13,0],    // 5
             [0,13,0],    // 6
-            [-3.5,-2,3.5],    // 7
+            [-3.5,-2,3.5],    // 7 x
 
         ];
         const indices = [
-            [0, 1, 2, 3],
+            [3, 2, 1, 0],
             [4, 5, 6, 7],
             [0, 1, 4, 5],
             [3, 7, 6, 2],
             [1, 2, 5, 6],
-            [0, 3, 4, 7],
+            [0, 4, 7, 3],
 
         ];
         window.physics.addConvexPolyhedron(this, 3, positions, indices, true);

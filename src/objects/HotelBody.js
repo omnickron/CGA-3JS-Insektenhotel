@@ -67,6 +67,13 @@ export default class HotelBody extends THREE.Group {
     rightInsideWall.castShadow = true;
     this.add(rightInsideWall);
 
+    let metalGeometry = new THREE.BoxGeometry(4.5, 8, 0.6);
+    let metal = new THREE.Mesh(metalGeometry, woodMaterial);
+    metal.position.set(-7.5, 1, -2.3);
+    metal.rotation.set(0,0, THREE.MathUtils.degToRad(-40));
+    this.add(metal);
+
+
     let front = new THREE.Mesh(frontGeometry, woodMaterial);
     //front.castShadow = true;
     //this.add(front);
@@ -196,15 +203,15 @@ export default class HotelBody extends THREE.Group {
 
       ];
       const indices = [
-      [0, 1, 3, 4],
+      [4,3,2,1],
       [5, 6, 8, 9],
       [0, 1, 6, 5],
       [9, 8, 3, 4],
       [0, 5, 4, 9],
-      [1, 2, 7, 6],
+      [6,7,1,2],
         [7, 2, 3, 8],
         [7,8,6],
-        [1,2,3]
+        [3,2,1]
       ];
       window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
   }

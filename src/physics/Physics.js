@@ -25,11 +25,12 @@ export default class Physics {
     this.world.broadphase = new CANNON.NaiveBroadphase();
     this.stepSize = stepSize;
 
-    if (!addFloor) {
+    if (addFloor) {
       let floor = new CANNON.Body({
         shape: new CANNON.Plane(),
         mass: 0
       });
+      floor.position.set(0, -38,0);
       floor.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
       this.world.addBody(floor);
     }

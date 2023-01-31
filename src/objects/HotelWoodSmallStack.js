@@ -119,12 +119,12 @@ export default class HotelWoodSmallStack extends THREE.Group {
 
         ];
         const indices = [
-            [0, 1, 2, 3],
+            [3,2,1,0],
             [4, 5, 6, 7],
             [0, 1, 4, 5],
             [3, 7, 6, 2],
             [1, 2, 5, 6],
-            [0, 3, 4, 7],
+            [4,7,0,3],
 
         ];
         window.physics.addConvexPolyhedron(this, 3, positions, indices, true);

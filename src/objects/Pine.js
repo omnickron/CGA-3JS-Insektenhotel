@@ -45,33 +45,4 @@ export default class Pine extends THREE.Group {
 
         this.add(pineExp);
     }
-
-    addPhysics() {
-        //TODO: THIS IS VERY WRONG
-        const positions = [
-            [9, -44, 20],     // 0
-            [9, 3.5, 0],    // 1
-            [9, 28.5, 0],   // 2
-            [-27, 3.5, 0],    // 3
-            [-27, -44, 0],    // 4
-            [9, -44, 20],     // 5
-            [9, 3.52, 20],    // 6
-            [9, 28.5, 20],   // 7
-            [-27, 3.5, 20],    // 8
-            [-27, -44, 20],    // 9
-
-        ];
-        const indices = [
-            [0, 1, 3, 4],  // front
-            [5, 6, 8, 9],  // left
-            [0, 1, 6, 5],  // right
-            [9, 8, 3, 4],  // top
-            [0, 5, 4, 9],  // bottom
-            [1, 2, 7, 6],
-            [7, 2, 3, 8],
-            [7, 8, 6],
-            [1, 2, 3]// back
-        ];
-        window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
-    }
 }

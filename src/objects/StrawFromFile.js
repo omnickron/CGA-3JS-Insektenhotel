@@ -28,11 +28,22 @@ export default class StrawFromFile extends THREE.Group {
   }
 
   addPhysics() {
-    if (this.loadingDone === false) {
-      window.setTimeout(this.addPhysics.bind(this), 100);
-    } else {
-      //TODO: PHYSICS COLLIDER ANPASSEN
-      //window.physics.addCylinder(this, 5, 20, 10, 150, 12);
-    }
+    const positions = [
+      [-16.5,-11,4],     // 0
+      [-16.5,-11,-12.5],    // 1
+      [1,-11,4],    // 2
+      [1,-11,-12.5],    // 3
+      [-7,0,4],     // 4
+      [-7,0,-12.5],    // 5
+
+    ];
+    const indices = [
+      [3,2,1,0],
+      [4,5,2,3],
+      [4,5,0,1],
+      [5,3,1],
+      [0,2,4],
+    ];
+    window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
   }
 }

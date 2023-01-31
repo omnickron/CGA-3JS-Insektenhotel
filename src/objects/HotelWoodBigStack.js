@@ -54,23 +54,23 @@ export default class HotelWoodBigStack extends THREE.Group {
 
     addPhysics() {
         const positions = [
-            [24.3,-4,-9.5],     // 0
+            [24.3,-4,-9.5],     // 0 X
             [20.3,9.5,-9.5],    // 1
             [3,9.5,-9.5],    // 2
-            [-3.5,-4,-9.5],    // 3
-            [24.3,-4,6],     // 4
+            [-3.5,-4,-9.5],    // 3 X
+            [24.3,-4,6],     // 4X
             [20.3,9.5,6],    // 5
             [3,9.5,6],    // 6
-            [-3.5,-4,6],    // 7
+            [-3.5, -4, 6],    // 7X
 
         ];
         const indices = [
-            [0, 1, 2, 3],
+            [3, 2 ,1 ,0],
             [4, 5, 6, 7],
             [0, 1, 4, 5],
             [3, 7, 6, 2],
             [1, 2, 5, 6],
-            [0, 3, 4, 7],
+            [4, 7, 3 ,0],
 
         ];
         window.physics.addConvexPolyhedron(this, 3, positions, indices, true);

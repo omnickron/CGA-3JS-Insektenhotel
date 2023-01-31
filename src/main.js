@@ -8,6 +8,7 @@ import Stats from 'stats';
 import HotelBody from './objects/HotelBody.js';
 import PinesFromFile from './objects/PinesFromFile.js';
 import StrawFromFile from './objects/StrawFromFile.js';
+import HotelStrawStack from './objects/HotelStrawStack.js';
 import GridTopFromFile from './objects/GridTopFromFile.js';
 import GridBottomFromFile from './objects/GridBottomFromFile.js';
 import HotelWoodBigStack from './objects/HotelWoodBigStack.js';
@@ -87,6 +88,7 @@ function main() {
   strawFromFile.scale.set(0.85, 0.85, 0.85);
   strawFromFile.position.set(-15, 21.3, 10);
   strawFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
+  strawFromFile.addPhysics();
 
   const pinesFromFile = new PinesFromFile();
   pinesFromFile.scale.set(0.85, 0.85, 0.85);
@@ -94,13 +96,11 @@ function main() {
   pinesFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
   pinesFromFile.addPhysics();
 
-
-
   const bigWoodFromFile = new BigWoodFromFile();
   bigWoodFromFile.scale.set(0.85, 0.85, 0.85);
   bigWoodFromFile.position.set(-15, 21.3, 10);
   bigWoodFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
-  bigWoodFromFile.addPhysics();
+ bigWoodFromFile.addPhysics();
 
   //HOTEL
 
@@ -115,6 +115,11 @@ function main() {
   bigWoodStack.position.set(50, -1.2, -5);
   bigWoodStack.rotation.set(hotelRotation[0], hotelRotation[1], hotelRotation[2]);
   bigWoodStack.addPhysics();
+
+    const strawStack = new HotelStrawStack();
+    strawStack.position.set(51.6, 10, -4);
+    strawStack.rotation.set(hotelRotation[0], hotelRotation[1], hotelRotation[2]);
+    strawStack.addPhysics();
 
   const smallWoodStackLeft = new HotelWoodSmallStack();
   smallWoodStackLeft.position.set(47.5, -18, -5);
@@ -133,22 +138,23 @@ function main() {
 
 
   //ADD HOTEL FROM FILE COMPONENTS
-  window.scene.add(bigWoodFromFile);
-  window.scene.add(pinesFromFile);
-  window.scene.add(gridTopFromFile);
-  window.scene.add(strawFromFile);
-  window.scene.add(gridBottomFromFile);
-  window.scene.add(smallWoodRightFromFile);
-  window.scene.add(smallWoodLeftFromFile);
-  window.scene.add(hotelBodyFromFile);
+  //window.scene.add(bigWoodFromFile);
+  //window.scene.add(pinesFromFile);
+  //window.scene.add(gridTopFromFile);
+  //window.scene.add(strawFromFile);
+  //window.scene.add(gridBottomFromFile);
+  //window.scene.add(smallWoodRightFromFile);
+  //window.scene.add(smallWoodLeftFromFile);
+  //window.scene.add(hotelBodyFromFile);
 
 
   //ADD HOTEL COMPONENTS
   //window.scene.add(hotelBody);
-  window.scene.add(bigWoodStack);
-  window.scene.add(smallWoodStackLeft);
-  window.scene.add(smallWoodStackRight);
-  window.scene.add(pineStack);
+  //window.scene.add(bigWoodStack);
+  // window.scene.add(strawStack);
+  //window.scene.add(smallWoodStackLeft);
+  //window.scene.add(smallWoodStackRight);
+  //window.scene.add(pineStack);
 
   //SCENE
   const sceneFromFile = new SceneFromFile();

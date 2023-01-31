@@ -26,13 +26,4 @@ export default class SceneFromFile extends THREE.Group {
       thisSceneFromFile.loadingDone = true;
     });
   }
-
-  addPhysics() {
-    if (this.loadingDone === false) {
-      window.setTimeout(this.addPhysics.bind(this), 100);
-    } else {
-      //TODO: PHYSICS COLLIDER ANPASSEN
-      //window.physics.addCylinder(this, 5, 20, 10, 150, 12);
-    }
-  }
 }
