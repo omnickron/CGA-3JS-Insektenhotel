@@ -28,9 +28,25 @@ import {keyDownAction, keyUpAction} from './eventfunctions/executeKeyAction.js';
 
 function main() {
 
+  const debugOn = true;
+  let sceneBackgroundColor = {
+    day : '#87ceeb',
+    night : '#202f36',
+    isNight : true
+    }
 
-  window.scene = new THREE.Scene();
-  window.scene.add(new THREE.AxesHelper(50));
+    window.scene = new THREE.Scene();
+  window.scene.add(new THREE.AxesHelper(50))  ;
+  window.scene.background = new THREE.Color( sceneBackgroundColor.day );
+  window.onclick =  ()=>{
+    if(debugOn && sceneBackgroundColor.isNight){
+      window.scene.background = new THREE.Color( sceneBackgroundColor.day );
+          sceneBackgroundColor.isNight = false
+    }else if(debugOn && !sceneBackgroundColor.isNight){
+      window.scene.background = new THREE.Color( sceneBackgroundColor.night );
+      sceneBackgroundColor.isNight = true
+    }
+  }
 
   window.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
   window.camera.position.set(0, 100, 300);
@@ -138,23 +154,23 @@ function main() {
 
 
   //ADD HOTEL FROM FILE COMPONENTS
-  //window.scene.add(bigWoodFromFile);
-  //window.scene.add(pinesFromFile);
-  //window.scene.add(gridTopFromFile);
-  //window.scene.add(strawFromFile);
-  //window.scene.add(gridBottomFromFile);
-  //window.scene.add(smallWoodRightFromFile);
-  //window.scene.add(smallWoodLeftFromFile);
-  //window.scene.add(hotelBodyFromFile);
+  window.scene.add(bigWoodFromFile);
+  window.scene.add(pinesFromFile);
+  window.scene.add(gridTopFromFile);
+  window.scene.add(strawFromFile);
+  window.scene.add(gridBottomFromFile);
+  window.scene.add(smallWoodRightFromFile);
+  window.scene.add(smallWoodLeftFromFile);
+  window.scene.add(hotelBodyFromFile);
 
 
   //ADD HOTEL COMPONENTS
-  //window.scene.add(hotelBody);
-  //window.scene.add(bigWoodStack);
-  // window.scene.add(strawStack);
-  //window.scene.add(smallWoodStackLeft);
-  //window.scene.add(smallWoodStackRight);
-  //window.scene.add(pineStack);
+  window.scene.add(hotelBody);
+  window.scene.add(bigWoodStack);
+   window.scene.add(strawStack);
+  window.scene.add(smallWoodStackLeft);
+  window.scene.add(smallWoodStackRight);
+  window.scene.add(pineStack);
 
   //SCENE
   const sceneFromFile = new SceneFromFile();
@@ -214,7 +230,7 @@ document.getElementById("startButton").addEventListener("click", function () {
   main();
   document.getElementById("overlay").remove();
   window.onresize = updateAspectRatio;
-  window.onclick = executeRaycast;
+  //window.onclick = executeRaycast;
   window.onkeydown = keyDownAction;
   window.onkeyup = keyUpAction;
 });
