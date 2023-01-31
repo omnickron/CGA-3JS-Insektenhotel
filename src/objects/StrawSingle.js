@@ -21,7 +21,7 @@ export default class StrawSingle extends THREE.Group {
         let test = [];
 
         const strawMaterial = new THREE.MeshLambertMaterial({color: 0xffff00, wireframe: false});
-        let strawGeometry = new THREE.CylinderGeometry(0.3, 0.3, 15, 3);
+        let strawGeometry = new THREE.CylinderGeometry(0.3, 0.3, 13, 3);
         let strawMesh = new THREE.Mesh(strawGeometry, strawMaterial);
 
 

@@ -16,7 +16,6 @@ export default class HotelBody extends THREE.Group {
 
   addParts() {
 
-    //TODO: CREATE WOOD TEXTURE HERE
     let woodMaterial = new THREE.MeshLambertMaterial({color: 0xff0000, wireframe: false});
 
     let wallGeometry = new THREE.BoxGeometry(1.8, 47.5, 20.5);
