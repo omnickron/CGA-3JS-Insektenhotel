@@ -2,23 +2,8 @@ import * as THREE from 'three';
 import * as DATGUI from 'datgui';
 import * as CONTROLS from 'controls';
 import * as TWEEN from 'tween';
-
-// Own modules
-import HotelBody from './objects/HotelBody.js';
-import PinesFromFile from './objects/PinesFromFile.js';
-import StrawFromFile from './objects/StrawFromFile.js';
-import HotelStrawStack from './objects/HotelStrawStack.js';
-import GridTopFromFile from './objects/GridTopFromFile.js';
-import GridBottomFromFile from './objects/GridBottomFromFile.js';
-import HotelWoodBigStack from './objects/HotelWoodBigStack.js';
-import HotelWoodSmallStack from './objects/HotelWoodSmallStack.js';
-import HotelBodyFromFile from './objects/HotelBodyFromFile.js';
 import SceneFromFile from './objects/SceneFromFile.js';
-import HotelPineStack from './objects/HotelPineStack.js';
-import SmallWoodLeftFromFile from './objects/SmallWoodLeftFromFile.js';
-import SmallWoodRightFromFile from './objects/SmallWoodRightFromFile.js';
 import GlowWormManager from './objects/GlowWormManager.js';
-import BigWoodFromFile from './objects/BigWoodFromFile.js';
 import Physics from './physics/Physics.js';
 import FullHotel from './objects/FullHotel.js';
 import FullHotelFromFile from './objects/FullHotelFromFile.js';
@@ -70,37 +55,16 @@ function main() {
     fullHotelFromFile.position.set(-15, 21.3, 10);
     fullHotelFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
     fullHotelFromFile.addPhysics();
+    window.scene.add(fullHotelFromFile);
 
     //HOTEL
-
     const fullHotel = new FullHotel();
     //fullHotel.scale.set(0.85, 0.85, 0.85);
     fullHotel.updateMatrix();
     fullHotel.position.set(70, 20.6, -5);
     fullHotel.rotation.set(hotelRotation[0], hotelRotation[1], hotelRotation[2]);
     fullHotel.addPhysics();
-
-    //ADD HOTEL FROM FILE COMPONENTS
-     window.scene.add(fullHotelFromFile);
-     //window.scene.add(bigWoodFromFile);
-     //window.scene.add(gridTopFromFile);
-     //window.scene.add(gridBottomFromFile);
-     //window.scene.add(pinesFromFile);
-     //window.scene.add(strawFromFile);
-     //window.scene.add(smallWoodRightFromFile);
-     //window.scene.add(smallWoodLeftFromFile);
-     //window.scene.add(hotelBodyFromFile);
-
-
-    //ADD HOTEL COMPONENTS
     window.scene.add(fullHotel);
-    //window.scene.add(hotelBody);
-    //window.scene.add(bigWoodStack);
-    //window.scene.add(strawStack);
-    //window.scene.add(smallWoodStackLeft);
-    //window.scene.add(smallWoodStackRight);
-    //window.scene.add(pineStack);
-
 
     //GLOWWORMS
     const glowWormManagerForFile = new GlowWormManager();
