@@ -120,7 +120,7 @@ export default class FullHotel extends THREE.Group {
         let woodMaterial = new THREE.MeshLambertMaterial({
             color: 0x5e3f21,
         });
-        
+
         //ANIMATIONS
         const bigWoodAnimation = new Animation(bigWoodStack, AnimationType.ROTATION, AnimationAxis.Y);
         bigWoodAnimation.setAmount(THREE.MathUtils.degToRad(-90));
