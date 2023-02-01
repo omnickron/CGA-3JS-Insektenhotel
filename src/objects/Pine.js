@@ -1,6 +1,5 @@
 import * as THREE from 'three';
-import * as TWEEN from 'tween';
-import CSG from 'csg';
+import {TextureLoader} from "three";
 
 import {GridShader} from '../shaders/GridShader.js';
 
@@ -15,7 +14,12 @@ export default class Pine extends THREE.Group {
 
     addParts() {
 
-        const pineMaterial = new THREE.MeshLambertMaterial({color: 0x0000ff, wireframe: false});
+        let pineMap = new TextureLoader().load('src/maps/pine3.png');
+        let pineMaterial = new THREE.MeshStandardMaterial({
+            color: 0x0e0a09,
+            map: pineMap
+        });
+
         let pineGeometry = new THREE.IcosahedronGeometry(5);
 
         let pineSegment1 = new THREE.Mesh(pineGeometry,pineMaterial);

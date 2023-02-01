@@ -1,6 +1,5 @@
 import * as THREE from 'three';
-import * as TWEEN from 'tween';
-import CSG from 'csg';
+import {TextureLoader} from "three";
 
 import {GridShader} from '../shaders/GridShader.js';
 
@@ -20,7 +19,12 @@ export default class StrawSingle extends THREE.Group {
         const maxShift = 3;
         let test = [];
 
-        const strawMaterial = new THREE.MeshLambertMaterial({color: 0xffff00, wireframe: false});
+        let strawMap = new TextureLoader().load('src/maps/bamboo.png');
+        let strawMaterial = new THREE.MeshStandardMaterial({
+            color: 0x98925d,
+            map: strawMap
+        });
+
         let strawGeometry = new THREE.CylinderGeometry(0.3, 0.3, 13, 3);
         let strawMesh = new THREE.Mesh(strawGeometry, strawMaterial);
 

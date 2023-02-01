@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import * as TWEEN from 'tween';
+import {TextureLoader} from "three";
 import CSG from 'csg';
 
 import {GridShader} from '../shaders/GridShader.js';
@@ -15,7 +15,11 @@ export default class HotelWoodSmall extends THREE.Group {
     }
 
     addParts() {
-        const woodMaterial = new THREE.MeshLambertMaterial({color: 0x00ff00, wireframe: false});
+        let woodMap = new TextureLoader().load('src/maps/bamboo.png');
+        let woodMaterial = new THREE.MeshStandardMaterial({
+            color: 0xe1e5b3,
+            map: woodMap
+        });
         let woodGeometryMain = new THREE.CylinderGeometry(this.diameter, this.diameter, 15, 16);
         let woodMain = new THREE.Mesh(woodGeometryMain, woodMaterial);
         const woodMainCsg = CSG.fromMesh(woodMain);

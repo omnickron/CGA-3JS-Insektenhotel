@@ -5,6 +5,7 @@ import CSG from 'csg';
 import {GridShader} from '../shaders/GridShader.js';
 
 import {Animation, AnimationType, AnimationAxis} from '../animation/Animation.js';
+import {TextureLoader} from "three";
 
 export default class HotelBody extends THREE.Group {
 
@@ -16,6 +17,97 @@ export default class HotelBody extends THREE.Group {
 
   addParts() {
 
+
+    let leftWallMap = new TextureLoader().load('src/maps/RawWood.png');
+    let leftWallMaterial = new THREE.MeshPhongMaterial({
+      color: 0x78442f,
+      map: leftWallMap
+    });
+
+    let rightWallMap = new TextureLoader().load('src/maps/RawWood.png');
+    let rightWallMaterial = new THREE.MeshPhongMaterial({
+      color: 0x78442f,
+      map: rightWallMap
+    });
+
+    let floorMap = new TextureLoader().load('src/maps/RawWood.png');
+    let floorMaterial = new THREE.MeshPhongMaterial({
+      color: 0x78442f,
+      map: floorMap
+    });
+
+    let lowerBoardMap = new TextureLoader().load('src/maps/RawWood.png');
+    let lowerBoardMaterial = new THREE.MeshPhongMaterial({
+      color: 0x78442f,
+      map: lowerBoardMap
+    });
+
+    let centerBoardMap = new TextureLoader().load('src/maps/RawWood.png');
+    let centerBoardMaterial = new THREE.MeshPhongMaterial({
+      color: 0x78442f,
+      map: centerBoardMap
+    });
+
+    let upperBoardMap = new TextureLoader().load('src/maps/RawWood.png');
+    let upperBoardMaterial = new THREE.MeshPhongMaterial({
+      color: 0x78442f,
+      map: upperBoardMap
+    });
+
+    let leftInsideWallMap = new TextureLoader().load('src/maps/RawWood.png');
+    let leftInsideWallMaterial = new THREE.MeshPhongMaterial({
+      color: 0x78442f,
+      map: leftInsideWallMap
+    });
+
+    let rightInsideWallMap = new TextureLoader().load('src/maps/RawWood.png');
+    let rightInsideWallMaterial = new THREE.MeshPhongMaterial({
+      color: 0x78442f,
+      map: rightInsideWallMap
+    });
+
+    //----------metal-------------
+    const path = "../../lib/three.js-r145/examples/textures/cube/Bridge2/";
+    const images = [
+      path + "posx.jpg", path + "negx.jpg",
+      path + "posy.jpg", path + "negy.jpg",
+      path + "posz.jpg", path + "negz.jpg"];
+    const envMap = new THREE.CubeTextureLoader().load(images);
+    envMap.mapping = THREE.CubeReflectionMapping;
+    envMap.encoding = THREE.LinearEncoding;
+    const metalMaterial = new THREE.MeshStandardMaterial({color: 0xe7e7e7, flatShading: false, });
+    metalMaterial.roughness = 0.1;
+    metalMaterial.metalness = 0.8;
+    metalMaterial.envMap = envMap;
+    metalMaterial.envMapIntensity = 1;
+
+    //----------frontBool-------------
+    let frontBoolMap = new TextureLoader().load('src/maps/RawWood.png');
+    let frontBoolMaterial = new THREE.MeshPhongMaterial({
+      color: 0x78442f,
+      map: frontBoolMap
+    });
+
+    let backWallMap = new TextureLoader().load('src/maps/RawWood.png');
+    let backWallMaterial = new THREE.MeshPhongMaterial({
+      color: 0x78442f,
+      map: backWallMap
+    });
+
+    let customRoofGeometryRightMap = new TextureLoader().load('src/maps/RawWood.png');
+    let customRoofGeometryRightMaterial = new THREE.MeshPhongMaterial({
+      color: 0x78442f,
+      map: customRoofGeometryRightMap
+    });
+
+    let customRoofGeometryLeftMap = new TextureLoader().load('src/maps/RawWood.png');
+    let customRoofGeometryLeftMaterial = new THREE.MeshPhongMaterial({
+      color: 0x78442f,
+      map: customRoofGeometryLeftMap
+    });
+
+    //---------------------------
+
     let woodMaterial = new THREE.MeshLambertMaterial({color: 0xff0000, wireframe: false});
 
     let wallGeometry = new THREE.BoxGeometry(1.8, 47.5, 20.5);
@@ -26,58 +118,58 @@ export default class HotelBody extends THREE.Group {
     let boardGeometry = new THREE.BoxGeometry(35, 1.2, 20.5);
     let smallBoardGeometry = new THREE.BoxGeometry(23.5, 1.2, 20.5);
 
-    let leftWall = new THREE.Mesh(wallGeometry, woodMaterial);
+    let leftWall = new THREE.Mesh(wallGeometry, leftWallMaterial);
     leftWall.position.set(-27, -44.5,10);
     leftWall.castShadow = true;
     this.add(leftWall);
 
-    let rightWall = new THREE.Mesh(wallGeometry, woodMaterial);
+    let rightWall = new THREE.Mesh(wallGeometry, rightWallMaterial);
     rightWall.position.set(9, -44.5,10);
     rightWall.castShadow = true;
     this.add(rightWall);
 
-    let floor = new THREE.Mesh(floorGeometry, woodMaterial);
+    let floor = new THREE.Mesh(floorGeometry, floorMaterial);
     floor.position.set(-8.8, -67.35,10);
     floor.castShadow = true;
     this.add(floor);
 
-    let lowerBoard = new THREE.Mesh(boardGeometry, woodMaterial);
+    let lowerBoard = new THREE.Mesh(boardGeometry, lowerBoardMaterial);
     lowerBoard.position.set(-8.8, -47.5,10);
     lowerBoard.castShadow = true;
     this.add(lowerBoard);
 
-    let centerBoard = new THREE.Mesh(boardGeometry, woodMaterial);
+    let centerBoard = new THREE.Mesh(boardGeometry, centerBoardMaterial);
     centerBoard.position.set(-8.8, -31, 10);
     centerBoard.castShadow = true;
     this.add(centerBoard);
 
-    let upperBoard = new THREE.Mesh(smallBoardGeometry, woodMaterial);
+    let upperBoard = new THREE.Mesh(smallBoardGeometry, upperBoardMaterial);
     upperBoard.position.set(-9.1, -13.5, 10);
     upperBoard.castShadow = true;
     this.add(upperBoard);
 
-    let leftInsideWall = new THREE.Mesh(smallWallGeometry, woodMaterial);
+    let leftInsideWall = new THREE.Mesh(smallWallGeometry, leftInsideWallMaterial);
     leftInsideWall.position.set(-16.5, -39.3, 10);
     leftInsideWall.castShadow = true;
     this.add(leftInsideWall);
 
-    let rightInsideWall = new THREE.Mesh(smallWallGeometry, woodMaterial);
+    let rightInsideWall = new THREE.Mesh(smallWallGeometry, rightInsideWallMaterial);
     rightInsideWall.position.set(-2, -39.3, 10);
     rightInsideWall.castShadow = true;
     this.add(rightInsideWall);
 
     let metalGeometry = new THREE.BoxGeometry(4.5, 8, 0.6);
-    let metal = new THREE.Mesh(metalGeometry, woodMaterial);
+    let metal = new THREE.Mesh(metalGeometry, metalMaterial);
     metal.position.set(-7.5, 1, -2.3);
     metal.rotation.set(0,0, THREE.MathUtils.degToRad(-40));
     this.add(metal);
 
 
-    let front = new THREE.Mesh(frontGeometry, woodMaterial);
+    let front = new THREE.Mesh(frontGeometry, frontBoolMaterial);
     //front.castShadow = true;
     //this.add(front);
 
-    let frontBool = new THREE.Mesh(frontBoolGeometry, woodMaterial);
+    let frontBool = new THREE.Mesh(frontBoolGeometry, frontBoolMaterial);
     //frontBool.castShadow = true;
     //this.add(frontBool);
 
@@ -130,7 +222,7 @@ export default class HotelBody extends THREE.Group {
     customRoofGeometryRight.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positionsRight), 3));
     customRoofGeometryRight.setIndex(indices);
     customRoofGeometryRight.computeVertexNormals();
-    const roofCustomRight = new THREE.Mesh(customRoofGeometryRight, woodMaterial);
+    const roofCustomRight = new THREE.Mesh(customRoofGeometryRight, customRoofGeometryRightMaterial);
     roofCustomRight.position.set(17.6, -33, -2);
     roofCustomRight.rotation.set(0,0,THREE.MathUtils.degToRad(37.4));
     roofCustomRight.castShadow = true;
@@ -140,7 +232,7 @@ export default class HotelBody extends THREE.Group {
     customRoofGeometryLeft.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positionsLeft), 3));
     customRoofGeometryLeft.setIndex(indices);
     customRoofGeometryLeft.computeVertexNormals();
-    const roofCustomLeft = new THREE.Mesh(customRoofGeometryLeft, woodMaterial);
+    const roofCustomLeft = new THREE.Mesh(customRoofGeometryLeft, customRoofGeometryLeftMaterial);
     roofCustomLeft.position.set(-36.9, -31.9, -2);
     roofCustomLeft.rotation.set(0,0,THREE.MathUtils.degToRad(-37.4));
     roofCustomLeft.castShadow = true;
@@ -181,7 +273,7 @@ export default class HotelBody extends THREE.Group {
     backWallGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(backWallPosition), 3));
     backWallGeometry.setIndex(backWallIndices);
     backWallGeometry.computeVertexNormals();
-    const backWall = new THREE.Mesh(backWallGeometry, woodMaterial);
+    const backWall = new THREE.Mesh(backWallGeometry, backWallMaterial);
     backWall.position.set(10, -68, -0.2);
     backWall.castShadow = true;
     this.add(backWall);
