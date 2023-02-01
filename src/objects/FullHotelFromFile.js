@@ -1,11 +1,5 @@
 import * as THREE from 'three';
-import * as DATGUI from 'datgui';
-import * as CONTROLS from 'controls';
-import * as TWEEN from 'tween';
 
-import {GridShader} from '../shaders/GridShader.js';
-
-import {Animation, AnimationType, AnimationAxis} from '../animation/Animation.js';
 import HotelBodyFromFile from "./HotelBodyFromFile.js";
 import SmallWoodLeftFromFile from "./SmallWoodLeftFromFile.js";
 import SmallWoodRightFromFile from "./SmallWoodRightFromFile.js";

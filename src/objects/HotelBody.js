@@ -13,6 +13,8 @@ export default class HotelBody extends THREE.Group {
     super();
     this.movieTexture = null;
     this.addParts();
+    this.children.castShadow = true;
+    this.children.receiveShadow = true;
   }
 
   addParts() {
@@ -81,7 +83,6 @@ export default class HotelBody extends THREE.Group {
     metalMaterial.envMap = envMap;
     metalMaterial.envMapIntensity = 1;
 
-    //----------frontBool-------------
     let frontBoolMap = new TextureLoader().load('src/maps/RawWood.png');
     let frontBoolMaterial = new THREE.MeshPhongMaterial({
       color: 0x78442f,
@@ -106,9 +107,7 @@ export default class HotelBody extends THREE.Group {
       map: customRoofGeometryLeftMap
     });
 
-    //---------------------------
-
-    let woodMaterial = new THREE.MeshLambertMaterial({color: 0xff0000, wireframe: false});
+    //let woodMaterial = new THREE.MeshLambertMaterial({color: 0xff0000, wireframe: false});
 
     let wallGeometry = new THREE.BoxGeometry(1.8, 47.5, 20.5);
     let frontGeometry = new THREE.BoxGeometry(1.2, 17.9, 16);
@@ -166,7 +165,7 @@ export default class HotelBody extends THREE.Group {
 
 
     let front = new THREE.Mesh(frontGeometry, frontBoolMaterial);
-    //front.castShadow = true;
+    front.castShadow = true;
     //this.add(front);
 
     let frontBool = new THREE.Mesh(frontBoolGeometry, frontBoolMaterial);
@@ -215,7 +214,6 @@ export default class HotelBody extends THREE.Group {
     1,0,5,
     7,6,2,
     7,2,3
-
     ];
 
     const customRoofGeometryRight = new THREE.BufferGeometry();

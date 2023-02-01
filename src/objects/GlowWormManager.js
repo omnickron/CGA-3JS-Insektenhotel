@@ -1,11 +1,5 @@
 import * as THREE from 'three';
-import * as TWEEN from 'tween';
-import CSG from 'csg';
-//import HotelBigWood from './HotelWoodBig.js';
 
-import {GridShader} from '../shaders/GridShader.js';
-
-import {Animation, AnimationType, AnimationAxis} from '../animation/Animation.js';
 
 export default class GlowWormManager extends THREE.Group {
     currentPosition;
@@ -16,7 +10,8 @@ export default class GlowWormManager extends THREE.Group {
         this.currentPosition = 0;
         this.sampleAmount = 1400;
         this.glowSamples = [];
-        this.glowWormAmount = 40;
+        this.glowWormAmount = 20;
+       // this.glowWormAmount = 10000;
         //this.opacity = 1;
         this.glowMaterial = new THREE.MeshLambertMaterial({color: 0xffffff, wireframe: false});
         this.addParts();
@@ -24,13 +19,11 @@ export default class GlowWormManager extends THREE.Group {
 
     addParts() {
         //GLOWWORM
-        //const glowMaterial = new THREE.MeshLambertMaterial({color: 0xffffff, wireframe: false});
         this.glowMaterial.emissive.set(0xff9d00);
         this.glowMaterial.transparent = true;
         this.glowMaterial.opacity = 0;
         let glowGeometry = new THREE.SphereGeometry( 0.3, 6, 6 );
         let glow = new THREE.Mesh(glowGeometry,this.glowMaterial);
-        //this.add(glow);
 
 
         //PATHS
@@ -43,20 +36,20 @@ export default class GlowWormManager extends THREE.Group {
                     Math.random() * 60 -30),
                 new THREE.Vector3(
                     Math.random() * 80 -40,
-                    Math.random() * (65 - 20) + 20,
+                    Math.random() * (75 - 20) + 20,
                     Math.random() * 100 -40),
                 new THREE.Vector3(
                     Math.random() * 80 -40,
-                    Math.random() * (65 - 20) + 20,
-                    Math.random() * 100 -40),
+                    Math.random() * (75 - 20) + 20,
+                    Math.random() * 120 -40),
                 new THREE.Vector3(
                     Math.random() * 80 -40,
                     Math.random() * (65 - 20) + 20,
-                    Math.random() * 100 -40),
+                    Math.random() * 120 -40),
                 new THREE.Vector3(
-                    Math.random() * 40 - 20,
-                    Math.random() * (48 - 38) + 38,
-                    Math.random() * 80 -30),
+                    Math.random() * 65 - 32,
+                    Math.random() * (55 - 38) + 38,
+                    Math.random() * 90 -40),
                 new THREE.Vector3(
                     Math.random() * (-(32 - 3) + 3),
                     Math.random() * (49 - 36) + 36,
