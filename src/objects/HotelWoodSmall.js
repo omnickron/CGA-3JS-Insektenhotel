@@ -2,10 +2,6 @@ import * as THREE from 'three';
 import {TextureLoader} from "three";
 import CSG from 'csg';
 
-import {GridShader} from '../shaders/GridShader.js';
-
-import {Animation, AnimationType, AnimationAxis} from '../animation/Animation.js';
-
 export default class HotelWoodSmall extends THREE.Group {
 
     constructor(diameter) {

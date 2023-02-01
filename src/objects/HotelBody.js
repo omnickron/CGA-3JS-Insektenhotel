@@ -121,52 +121,65 @@ export default class HotelBody extends THREE.Group {
     let leftWall = new THREE.Mesh(wallGeometry, leftWallMaterial);
     leftWall.position.set(-27, -44.5,10);
     leftWall.castShadow = true;
+    leftWall.receiveShadow = true;
+
     this.add(leftWall);
 
     let rightWall = new THREE.Mesh(wallGeometry, rightWallMaterial);
     rightWall.position.set(9, -44.5,10);
     rightWall.castShadow = true;
+    rightWall.receiveShadow = true;
     this.add(rightWall);
 
     let floor = new THREE.Mesh(floorGeometry, floorMaterial);
     floor.position.set(-8.8, -67.35,10);
     floor.castShadow = true;
+    floor.receiveShadow = true;
     this.add(floor);
 
     let lowerBoard = new THREE.Mesh(boardGeometry, lowerBoardMaterial);
     lowerBoard.position.set(-8.8, -47.5,10);
     lowerBoard.castShadow = true;
+    lowerBoard.receiveShadow = true;
     this.add(lowerBoard);
 
     let centerBoard = new THREE.Mesh(boardGeometry, centerBoardMaterial);
     centerBoard.position.set(-8.8, -31, 10);
     centerBoard.castShadow = true;
+    centerBoard.receiveShadow = true;
     this.add(centerBoard);
 
     let upperBoard = new THREE.Mesh(smallBoardGeometry, upperBoardMaterial);
     upperBoard.position.set(-9.1, -13.5, 10);
     upperBoard.castShadow = true;
+    upperBoard.receiveShadow = true;
     this.add(upperBoard);
 
     let leftInsideWall = new THREE.Mesh(smallWallGeometry, leftInsideWallMaterial);
     leftInsideWall.position.set(-16.5, -39.3, 10);
     leftInsideWall.castShadow = true;
+    leftInsideWall.receiveShadow = true;
     this.add(leftInsideWall);
 
     let rightInsideWall = new THREE.Mesh(smallWallGeometry, rightInsideWallMaterial);
     rightInsideWall.position.set(-2, -39.3, 10);
     rightInsideWall.castShadow = true;
+    rightInsideWall.receiveShadow = true;
     this.add(rightInsideWall);
 
     let metalGeometry = new THREE.BoxGeometry(4.5, 8, 0.6);
     let metal = new THREE.Mesh(metalGeometry, metalMaterial);
     metal.position.set(-7.5, 1, -2.3);
     metal.rotation.set(0,0, THREE.MathUtils.degToRad(-40));
+    metal.receiveShadow = true;
+    metal.castShadow = true;
+
     this.add(metal);
 
 
     let front = new THREE.Mesh(frontGeometry, frontBoolMaterial);
     front.castShadow = true;
+    front.receiveShadow = true;
     //this.add(front);
 
     let frontBool = new THREE.Mesh(frontBoolGeometry, frontBoolMaterial);

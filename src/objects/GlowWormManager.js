@@ -12,7 +12,6 @@ export default class GlowWormManager extends THREE.Group {
         this.glowSamples = [];
         this.glowWormAmount = 20;
        // this.glowWormAmount = 10000;
-        //this.opacity = 1;
         this.glowMaterial = new THREE.MeshLambertMaterial({color: 0xffffff, wireframe: false});
         this.addParts();
     }
@@ -63,7 +62,6 @@ export default class GlowWormManager extends THREE.Group {
     updatePositions(){
         for (let k=0; k < this.children.length-1; k++){
             this.children[k].position.set(this.glowSamples[k][this.currentPosition].x,this.glowSamples[k][this.currentPosition].y,this.glowSamples[k][this.currentPosition].z);
-
         }
         if ((this.currentPosition/this.sampleAmount*8) < 1){
             this.glowMaterial.opacity = (this.currentPosition/this.sampleAmount*5)%1

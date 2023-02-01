@@ -1,10 +1,6 @@
 import * as THREE from 'three';
 import {TextureLoader} from "three";
 
-import {GridShader} from '../shaders/GridShader.js';
-
-import {Animation, AnimationType, AnimationAxis} from '../animation/Animation.js';
-
 export default class Pine extends THREE.Group {
 
     constructor() {
@@ -40,7 +36,14 @@ export default class Pine extends THREE.Group {
         pineSegment4.position.set(0,5.5,0);
         pineSegment4.rotation.set(0,THREE.MathUtils.degToRad(30),0);
 
-
+        pineSegment4.castShadow = true;
+        pineSegment4.receiveShadow = true;
+        pineSegment3.castShadow = true;
+        pineSegment3.receiveShadow = true;
+        pineSegment2.castShadow = true;
+        pineSegment2.receiveShadow = true;
+        pineSegment1.castShadow = true;
+        pineSegment1.receiveShadow = true;
         let pineExp = new THREE.Group();
         pineExp.add(pineSegment1);
         pineExp.add(pineSegment2);

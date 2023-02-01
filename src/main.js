@@ -48,6 +48,7 @@ function main() {
     window.glowWormsDidFly = false;
 
 
+
 //HOTEL FROM FILE
     const fullHotelFromFile = new FullHotelFromFile();
     fullHotelFromFile.scale.set(0.85, 0.85, 0.85);
@@ -113,8 +114,9 @@ function main() {
 
     const clock = new THREE.Clock();
 
+
     function mainLoop() {
-        updateDayTime(ambientLight, spotLight);
+        updateDayTime(ambientLight, spotLight, fullHotel);
 
         //animateGlowWorms
         if (window.timeTracker.switch){
@@ -136,13 +138,22 @@ function main() {
         TWEEN.update();
         window.physics.update(delta);
         window.renderer.render(window.scene, window.camera);
+        fullHotel.animations.forEach(function (animation) {
+            animation.update(delta);
+        });
+        fullHotelFromFile.animations.forEach(function (animation) {
+            animation.update(delta);
+        });
         requestAnimationFrame(mainLoop);
+
+
+
     }
 
     mainLoop();
 }
 
-function updateDayTime(ambientLight, spotLight) {
+function updateDayTime(ambientLight, spotLight, fullHotel) {
     const debugOn = false;
     let sceneBackgroundColor = {
         day: '#87ceeb',
@@ -159,6 +170,7 @@ function updateDayTime(ambientLight, spotLight) {
 
         //SWITCH TO NIGHT MODE
     } else if (!debugOn && window.timeTracker.switch) {
+
         ambientLight.intensity = 0.035;
         ambientLight.color.setHex( 0x87acd6 );
         spotLight.color.setHex( 0x87acd6 );

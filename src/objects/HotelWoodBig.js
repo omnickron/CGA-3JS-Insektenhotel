@@ -2,8 +2,6 @@ import * as THREE from 'three';
 import {TextureLoader} from "three";
 import CSG from 'csg';
 
-import {GridShader} from '../shaders/GridShader.js';
-
 import {Animation, AnimationType, AnimationAxis} from '../animation/Animation.js';
 
 export default class HotelWoodBig extends THREE.Group {
@@ -35,6 +33,8 @@ export default class HotelWoodBig extends THREE.Group {
                 const woodExp1 = CSG.toMesh(woodMainCsg.subtract(woodBigBoolCsg), woodMain.matrix, woodBigBool.material);
                 //woodExp1.position.set(-9.2, -39.3, 20.9);
                 woodExp1.rotation.set(THREE.MathUtils.degToRad(90), 0, 0);
+                woodExp1.receiveShadow = true;
+                woodExp1.castShadow = true;
                 woodExp1.name = 'bigWoodStack';
                 this.add(woodExp1);
                 break;
@@ -56,6 +56,8 @@ export default class HotelWoodBig extends THREE.Group {
                 woodExp2 = CSG.toMesh(woodExp2Csg.subtract(boolCsg2), woodExp2.matrix, woodMedBool2.material);
                 woodExp2.rotation.set(THREE.MathUtils.degToRad(90), 0, 0);
                 woodExp2.name = 'bigWoodStack';
+                woodExp2.receiveShadow = true;
+                woodExp2.castShadow = true;
                 this.add(woodExp2);
                 break;
             default:

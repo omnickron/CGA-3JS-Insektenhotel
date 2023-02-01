@@ -26,32 +26,16 @@ export default class SceneFromFile extends THREE.Group {
       thisSceneFromFile.loadingDone = true;
     });
   }
-
   addPhysics() {
-    const positions = [
-      [8.5,-58,-14],     // 0
-      [8.5,-17.3,-14],    // 1
-      [-8 ,4.5,-14],   //
-      [-24,-17.3,-14],    // 3
-      [-24,-58,-14],    // 4
-      [8.5,-58,4],     // 5
-      [8.5,-17.3,4],    // 6
-      [-8 ,4.5,4],   // 7
-      [-24,-17.3,4],    // 8
-      [-24,-58,4],    // 9
 
-    ];
-    const indices = [
-      [3,2,1,0],
-      [5, 6, 8, 9],
-      [0, 1, 6, 5],
-      [9, 8, 3, 4],
-      [0, 5, 4, 9],
-      [6,7,1,2],
-      [7, 2, 3, 8],
-      [7,8,6],
-      [3,2,1]
-    ];
-    window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
+    //addCylinder(object, mass, upperRadius, lowerRadius, height, segments
+    //offsetX = 0, offsetY = 0, offsetZ = 0,
+    //               eulerX = 0, eulerY = 0, eulerZ = 0,
+    //               sleeping = false) {
+    window.physics.addCylinder(this, 0, 25, 130,150,8, this.offsetX = 10, this.offsetY = -160, this.offsetZ = -120);
+    window.physics.addCylinder(this, 0, 18, 80,100,8, this.offsetX = 95, this.offsetY = -150, this.offsetZ = -110);
+    window.physics.addCylinder(this, 0, 8, 6,150,8, this.offsetX = 162, this.offsetY = -150, this.offsetZ = -58);
+    window.physics.addCylinder(this, 0, 20, 35,150,8, this.offsetX = -53, this.offsetY = -150, this.offsetZ = -23);
+    window.physics.addCylinder(this, 0, 20, 50,50,8, this.offsetX = -123, this.offsetY = -170, this.offsetZ = -23);
   }
 }

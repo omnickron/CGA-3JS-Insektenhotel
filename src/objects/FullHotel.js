@@ -16,7 +16,10 @@ export default class FullHotel extends THREE.Group {
     }
 
     addParts() {
-        let gitterMaterial = new THREE.LineBasicMaterial({color: 0x454545});
+        let gitterMaterial = new THREE.LineBasicMaterial({
+            color: 0x454545,
+            transparent: true
+        });
         let untenGitterGeo = new THREE.PlaneGeometry(35.5, 20, 28, 15);
         ToQuads(untenGitterGeo);
         let gitter = new THREE.LineSegments(untenGitterGeo, gitterMaterial);
@@ -88,7 +91,6 @@ export default class FullHotel extends THREE.Group {
         bigWoodStack.castShadow = true;
         bigWoodStack.receiveShadow = true;
         bigWoodStack.name = 'bigWoodStack';
-        console.log(bigWoodStack);
         //bigWoodStack.addPhysics();
 
         const strawStack = new HotelStrawStack();
@@ -109,6 +111,8 @@ export default class FullHotel extends THREE.Group {
         smallWoodStackRight.position.set(1.1, -38.6, 10);
         smallWoodStackRight.castShadow = true;
         smallWoodStackRight.receiveShadow = true;
+        smallWoodStackRight.name = 'smallWoodStackRight';
+        smallWoodStackRight.children.forEach(child => child.children.forEach(child => child.name="smallWoodStackRight"));
         //smallWoodStackRight.addPhysics();
 
         const pineStack = new HotelPineStack();
@@ -121,12 +125,24 @@ export default class FullHotel extends THREE.Group {
             color: 0x5e3f21,
         });
 
-        //ANIMATIONS
-        const bigWoodAnimation = new Animation(bigWoodStack, AnimationType.ROTATION, AnimationAxis.Y);
-        bigWoodAnimation.setAmount(THREE.MathUtils.degToRad(-90));
-        bigWoodAnimation.setSpeed(THREE.MathUtils.degToRad(360));
-        bigWoodStack.linearAnimation = bigWoodAnimation;
-        this.animations.push(bigWoodAnimation);
+        // ANOMATIONS
+        const bigWoodStackAnimation = new Animation(bigWoodStack, AnimationType.TRANSLATION, AnimationAxis.Z);
+        bigWoodStackAnimation.setAmount(20);
+        bigWoodStackAnimation.setSpeed(30);
+        bigWoodStack.linearAnimation = bigWoodStackAnimation;
+        this.animations.push(bigWoodStackAnimation);
+
+        const smallWoodStackLeftAnimation = new Animation(smallWoodStackLeft, AnimationType.TRANSLATION, AnimationAxis.Z);
+        smallWoodStackLeftAnimation.setAmount(7);
+        smallWoodStackLeftAnimation.setSpeed(30);
+        smallWoodStackLeft.linearAnimation = smallWoodStackLeftAnimation;
+        this.animations.push(smallWoodStackLeftAnimation);
+
+        const smallWoodStackRightAnimation = new Animation(smallWoodStackRight, AnimationType.TRANSLATION, AnimationAxis.Z);
+        smallWoodStackRightAnimation.setAmount(15);
+        smallWoodStackRightAnimation.setSpeed(30);
+        smallWoodStackRight.linearAnimation = smallWoodStackRightAnimation;
+        this.animations.push(smallWoodStackRightAnimation);
 
         this.add(hotelBody);
         this.add(bigWoodStack);
@@ -161,6 +177,6 @@ export default class FullHotel extends THREE.Group {
             [7, 8, 6],
             [3, 2, 1]
         ];
-        window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
+        window.physics.addConvexPolyhedron(this, 3, positions, indices, false);
     }
 }

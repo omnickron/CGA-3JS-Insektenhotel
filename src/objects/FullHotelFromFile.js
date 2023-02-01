@@ -8,11 +8,13 @@ import GridTopFromFile from "./GridTopFromFile.js";
 import StrawFromFile from "./StrawFromFile.js";
 import PinesFromFile from "./PinesFromFile.js";
 import BigWoodFromFile from "./BigWoodFromFile.js";
+import {Animation, AnimationAxis, AnimationType} from "../animation/Animation.js";
 
 export default class FullHotelFromFile extends THREE.Group {
 
   constructor() {
     super();
+    this.animations = [];
     this.addParts();
   }
 
@@ -21,8 +23,10 @@ export default class FullHotelFromFile extends THREE.Group {
       hotelBodyFromFile.updateMatrix();
       //hotelBodyFromFile.addPhysics();
       const smallWoodLeftFromFile = new SmallWoodLeftFromFile();
+      smallWoodLeftFromFile.name="smallWoodLeftFromFile";
       //smallWoodLeftFromFile.addPhysics();
       const smallWoodRightFromFile = new SmallWoodRightFromFile();
+      smallWoodRightFromFile.name = "smallWoodRightFromFile";
       //smallWoodRightFromFile.addPhysics();
       const gridBottomFromFile = new GridBottomFromFile();
       const gridTopFromFile = new GridTopFromFile();
@@ -32,6 +36,26 @@ export default class FullHotelFromFile extends THREE.Group {
      // pinesFromFile.addPhysics();
       const bigWoodFromFile = new BigWoodFromFile();
       //bigWoodFromFile.addPhysics();
+
+
+      // ANOMATIONS
+      const bigWoodStackAnimation = new Animation(bigWoodFromFile, AnimationType.TRANSLATION, AnimationAxis.Z);
+      bigWoodStackAnimation.setAmount(20);
+      bigWoodStackAnimation.setSpeed(30);
+      bigWoodFromFile.linearAnimation = bigWoodStackAnimation;
+      this.animations.push(bigWoodStackAnimation);
+
+      const smallWoodStackLeftAnimation = new Animation(smallWoodLeftFromFile, AnimationType.TRANSLATION, AnimationAxis.Z);
+      smallWoodStackLeftAnimation.setAmount(7);
+      smallWoodStackLeftAnimation.setSpeed(30);
+      smallWoodLeftFromFile.linearAnimation = smallWoodStackLeftAnimation;
+      this.animations.push(smallWoodStackLeftAnimation);
+
+      const smallWoodStackRightAnimation = new Animation(smallWoodRightFromFile, AnimationType.TRANSLATION, AnimationAxis.Z);
+      smallWoodStackRightAnimation.setAmount(15);
+      smallWoodStackRightAnimation.setSpeed(30);
+      smallWoodRightFromFile.linearAnimation = smallWoodStackRightAnimation;
+      this.animations.push(smallWoodStackRightAnimation);
 
       this.add(bigWoodFromFile);
       this.add(gridTopFromFile);
