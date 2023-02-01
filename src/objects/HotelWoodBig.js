@@ -16,9 +16,9 @@ export default class HotelWoodBig extends THREE.Group {
     }
 
     addParts() {
-        let woodMap = new TextureLoader().load('src/maps/dunkelHolz5.png');
-        let woodMaterial = new THREE.MeshStandardMaterial({
-            color: 0x30230c,
+        let woodMap = new TextureLoader().load('src/maps/dunkelHolz2.png');
+        let woodMaterial = new THREE.MeshLambertMaterial({
+            color: 0x5e3f21,
             //roughness:0.1,
             map: woodMap
         });
@@ -35,6 +35,7 @@ export default class HotelWoodBig extends THREE.Group {
                 const woodExp1 = CSG.toMesh(woodMainCsg.subtract(woodBigBoolCsg), woodMain.matrix, woodBigBool.material);
                 //woodExp1.position.set(-9.2, -39.3, 20.9);
                 woodExp1.rotation.set(THREE.MathUtils.degToRad(90), 0, 0);
+                woodExp1.name = 'bigWoodStack';
                 this.add(woodExp1);
                 break;
             case 2:
@@ -54,11 +55,11 @@ export default class HotelWoodBig extends THREE.Group {
                 const woodExp2Csg = CSG.fromMesh(woodExp2);
                 woodExp2 = CSG.toMesh(woodExp2Csg.subtract(boolCsg2), woodExp2.matrix, woodMedBool2.material);
                 woodExp2.rotation.set(THREE.MathUtils.degToRad(90), 0, 0);
+                woodExp2.name = 'bigWoodStack';
                 this.add(woodExp2);
                 break;
             default:
                 console.log(`Sorry, das war nix.`);
         }
-
     }
 }

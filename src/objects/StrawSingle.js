@@ -19,7 +19,7 @@ export default class StrawSingle extends THREE.Group {
         const maxShift = 3;
         let test = [];
 
-        let strawMap = new TextureLoader().load('src/maps/bamboo.png');
+        let strawMap = new TextureLoader().load('src/maps/straw2.png');
         let strawMaterial = new THREE.MeshStandardMaterial({
             color: 0x98925d,
             map: strawMap

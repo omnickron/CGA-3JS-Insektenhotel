@@ -3,7 +3,7 @@ import CannonDebugger from '../../../../lib/cannon-es-debugger-1.0.0/dist/cannon
 
 export default class Physics {
 
-  constructor(debugRendering = false) {
+  constructor(debugRendering = true) {
 
     this.world = new CANNON.World();
 

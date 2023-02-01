@@ -20,52 +20,77 @@ export default class HotelBody extends THREE.Group {
   addParts() {
 
 
-    let leftWallMap = new TextureLoader().load('src/maps/RawWood.png');
+    let leftWallMap = new TextureLoader().load('src/maps/RawWood3.png');
     let leftWallMaterial = new THREE.MeshPhongMaterial({
-      color: 0x78442f,
+      color: 0xd79f88,
       map: leftWallMap
     });
 
-    let rightWallMap = new TextureLoader().load('src/maps/RawWood.png');
+    let rightWallMap = new TextureLoader().load('src/maps/RawWood3.png');
     let rightWallMaterial = new THREE.MeshPhongMaterial({
-      color: 0x78442f,
+      color: 0xd79f88,
       map: rightWallMap
     });
 
-    let floorMap = new TextureLoader().load('src/maps/RawWood.png');
+    let frontBoolMap = new TextureLoader().load('src/maps/RawWood3.png');
+    let frontBoolMaterial = new THREE.MeshPhongMaterial({
+      color: 0xd79f88,
+      map: frontBoolMap
+    });
+
+    let floorMap = new TextureLoader().load('src/maps/RawWood3.png');
     let floorMaterial = new THREE.MeshPhongMaterial({
-      color: 0x78442f,
+      color: 0xd79f88,
       map: floorMap
     });
 
-    let lowerBoardMap = new TextureLoader().load('src/maps/RawWood.png');
+    let lowerBoardMap = new TextureLoader().load('src/maps/RawWood3.png');
     let lowerBoardMaterial = new THREE.MeshPhongMaterial({
-      color: 0x78442f,
+      color: 0xd79f88,
       map: lowerBoardMap
     });
 
-    let centerBoardMap = new TextureLoader().load('src/maps/RawWood.png');
+    let centerBoardMap = new TextureLoader().load('src/maps/RawWood3.png');
     let centerBoardMaterial = new THREE.MeshPhongMaterial({
-      color: 0x78442f,
+      color: 0xd79f88,
       map: centerBoardMap
     });
 
-    let upperBoardMap = new TextureLoader().load('src/maps/RawWood.png');
+    let upperBoardMap = new TextureLoader().load('src/maps/RawWood3.png');
     let upperBoardMaterial = new THREE.MeshPhongMaterial({
-      color: 0x78442f,
+      color: 0xd79f88,
       map: upperBoardMap
     });
 
-    let leftInsideWallMap = new TextureLoader().load('src/maps/RawWood.png');
+    let leftInsideWallMap = new TextureLoader().load('src/maps/RawWood3.png');
     let leftInsideWallMaterial = new THREE.MeshPhongMaterial({
-      color: 0x78442f,
+      color: 0xd79f88,
       map: leftInsideWallMap
     });
 
-    let rightInsideWallMap = new TextureLoader().load('src/maps/RawWood.png');
+    let rightInsideWallMap = new TextureLoader().load('src/maps/RawWood3.png');
     let rightInsideWallMaterial = new THREE.MeshPhongMaterial({
-      color: 0x78442f,
+      color: 0xd79f88,
       map: rightInsideWallMap
+    });
+
+
+    let backWallMap = new TextureLoader().load('src/maps/RawWood3.png');
+    let backWallMaterial = new THREE.MeshPhongMaterial({
+      color: 0xd79f88,
+      map: backWallMap
+    });
+
+    let customRoofGeometryRightMap = new TextureLoader().load('src/maps/RawWood3.png');
+    let customRoofGeometryRightMaterial = new THREE.MeshPhongMaterial({
+      color: 0xd79f88,
+      map: customRoofGeometryRightMap
+    });
+
+    let customRoofGeometryLeftMap = new TextureLoader().load('src/maps/RawWood3.png');
+    let customRoofGeometryLeftMaterial = new THREE.MeshPhongMaterial({
+      color: 0xd79f88,
+      map: customRoofGeometryLeftMap
     });
 
     //----------metal-------------
@@ -82,30 +107,6 @@ export default class HotelBody extends THREE.Group {
     metalMaterial.metalness = 0.8;
     metalMaterial.envMap = envMap;
     metalMaterial.envMapIntensity = 1;
-
-    let frontBoolMap = new TextureLoader().load('src/maps/RawWood.png');
-    let frontBoolMaterial = new THREE.MeshPhongMaterial({
-      color: 0x78442f,
-      map: frontBoolMap
-    });
-
-    let backWallMap = new TextureLoader().load('src/maps/RawWood.png');
-    let backWallMaterial = new THREE.MeshPhongMaterial({
-      color: 0x78442f,
-      map: backWallMap
-    });
-
-    let customRoofGeometryRightMap = new TextureLoader().load('src/maps/RawWood.png');
-    let customRoofGeometryRightMaterial = new THREE.MeshPhongMaterial({
-      color: 0x78442f,
-      map: customRoofGeometryRightMap
-    });
-
-    let customRoofGeometryLeftMap = new TextureLoader().load('src/maps/RawWood.png');
-    let customRoofGeometryLeftMaterial = new THREE.MeshPhongMaterial({
-      color: 0x78442f,
-      map: customRoofGeometryLeftMap
-    });
 
     //let woodMaterial = new THREE.MeshLambertMaterial({color: 0xff0000, wireframe: false});
 

@@ -81,6 +81,7 @@ function main() {
     const sceneFromFile = new SceneFromFile();
     sceneFromFile.position.set(0, 140, 0);
     sceneFromFile.scale.set(4, 4, 4);
+    sceneFromFile.addPhysics();
     window.scene.add(sceneFromFile);
 
     //LIGHT

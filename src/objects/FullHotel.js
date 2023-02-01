@@ -5,11 +5,13 @@ import HotelWoodBigStack from "./HotelWoodBigStack.js";
 import HotelStrawStack from "./HotelStrawStack.js";
 import HotelWoodSmallStack from "./HotelWoodSmallStack.js";
 import HotelPineStack from "./HotelPineStack.js";
+import {Animation, AnimationAxis, AnimationType} from "../animation/Animation.js";
 
 export default class FullHotel extends THREE.Group {
 
     constructor() {
         super();
+        this.animations=[];
         this.addParts();
     }
 
@@ -85,7 +87,8 @@ export default class FullHotel extends THREE.Group {
         bigWoodStack.position.set(-18.6, -22, 10);
         bigWoodStack.castShadow = true;
         bigWoodStack.receiveShadow = true;
-
+        bigWoodStack.name = 'bigWoodStack';
+        console.log(bigWoodStack);
         //bigWoodStack.addPhysics();
 
         const strawStack = new HotelStrawStack();
@@ -98,6 +101,8 @@ export default class FullHotel extends THREE.Group {
         smallWoodStackLeft.position.set(-20.3, -38.6, 10);
         smallWoodStackLeft.castShadow = true;
         smallWoodStackLeft.receiveShadow = true;
+        smallWoodStackLeft.name = 'smallWoodStackLeft';
+        smallWoodStackLeft.children.forEach(child => child.children.forEach(child => child.name="smallWoodStackLeft"));
         //smallWoodStackLeft.addPhysics();
 
         const smallWoodStackRight = new HotelWoodSmallStack();
@@ -111,6 +116,17 @@ export default class FullHotel extends THREE.Group {
         pineStack.castShadow = true;
         pineStack.receiveShadow = true;
         //pineStack.addPhysics();
+
+        let woodMaterial = new THREE.MeshLambertMaterial({
+            color: 0x5e3f21,
+        });
+        
+        //ANIMATIONS
+        const bigWoodAnimation = new Animation(bigWoodStack, AnimationType.ROTATION, AnimationAxis.Y);
+        bigWoodAnimation.setAmount(THREE.MathUtils.degToRad(-90));
+        bigWoodAnimation.setSpeed(THREE.MathUtils.degToRad(360));
+        bigWoodStack.linearAnimation = bigWoodAnimation;
+        this.animations.push(bigWoodAnimation);
 
         this.add(hotelBody);
         this.add(bigWoodStack);

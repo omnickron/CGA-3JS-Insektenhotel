@@ -15,11 +15,11 @@ export default class HotelWoodSmall extends THREE.Group {
     }
 
     addParts() {
-        let woodMap = new TextureLoader().load('src/maps/bamboo.png');
-        let woodMaterial = new THREE.MeshStandardMaterial({
-            color: 0xe1e5b3,
-            map: woodMap
-        });
+            let woodMap = new TextureLoader().load('src/maps/bamboo2.png');
+            let woodMaterial = new THREE.MeshStandardMaterial({
+                color: 0xbeaf6f,
+                map: woodMap
+            });
         let woodGeometryMain = new THREE.CylinderGeometry(this.diameter, this.diameter, 15, 16);
         let woodMain = new THREE.Mesh(woodGeometryMain, woodMaterial);
         const woodMainCsg = CSG.fromMesh(woodMain);

@@ -12,6 +12,7 @@ export default class HotelWoodBigStack extends THREE.Group {
 
     constructor() {
         super();
+        this.animation = [];
         this.addParts();
     }
 
