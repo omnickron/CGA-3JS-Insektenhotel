@@ -2,8 +2,6 @@ import * as THREE from 'three';
 import {TextureLoader} from "three";
 import CSG from 'csg';
 
-import {Animation, AnimationType, AnimationAxis} from '../animation/Animation.js';
-
 export default class HotelWoodBig extends THREE.Group {
 
     constructor(holes, diameter) {

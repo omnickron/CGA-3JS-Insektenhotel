@@ -1,11 +1,5 @@
 import * as THREE from 'three';
-import * as TWEEN from 'tween';
-import CSG from 'csg';
-//import HotelBigWood from './HotelWoodBig.js';
 
-import {GridShader} from '../shaders/GridShader.js';
-
-import {Animation, AnimationType, AnimationAxis} from '../animation/Animation.js';
 import HotelWoodBig from "./HotelWoodBig.js";
 
 export default class HotelWoodBigStack extends THREE.Group {
@@ -51,7 +45,6 @@ export default class HotelWoodBigStack extends THREE.Group {
         this.add(hotelWoodBig6);
         this.add(hotelWoodBig7);
         this.add(hotelWoodBig8);
-
         }
 
     addPhysics() {
@@ -64,7 +57,6 @@ export default class HotelWoodBigStack extends THREE.Group {
             [20.3,9.5,6],    // 5
             [3,9.5,6],    // 6
             [-3.5, -4, 6],    // 7X
-
         ];
         const indices = [
             [3, 2 ,1 ,0],

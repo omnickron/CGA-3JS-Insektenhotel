@@ -21,7 +21,7 @@ export default class PinesFromFile extends THREE.Group {
           child.castShadow = true;
         }
       });
-      gltf.scene.position.set(0, -45, 0); // Shift loaded model down half its height
+      gltf.scene.position.set(0, -25, 0); // Shift loaded model down half its height
       thisPinesFromFile.add(gltf.scene);
       thisPinesFromFile.loadingDone = true;
     });

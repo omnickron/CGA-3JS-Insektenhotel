@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 
-
 export default class GlowWormManager extends THREE.Group {
     currentPosition;
     sampleAmount;
@@ -77,6 +76,5 @@ export default class GlowWormManager extends THREE.Group {
         }else{
             this.currentPosition++;
         }
-
     }
 }

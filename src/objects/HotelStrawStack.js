@@ -1,10 +1,5 @@
 import * as THREE from 'three';
-import * as TWEEN from 'tween';
-import CSG from 'csg';
 
-import {GridShader} from '../shaders/GridShader.js';
-
-import {Animation, AnimationType, AnimationAxis} from '../animation/Animation.js';
 import StrawSingle from "./StrawSingle.js";
 
 export default class HotelStrawStack extends THREE.Group {

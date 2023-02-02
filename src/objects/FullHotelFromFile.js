@@ -8,64 +8,49 @@ import GridTopFromFile from "./GridTopFromFile.js";
 import StrawFromFile from "./StrawFromFile.js";
 import PinesFromFile from "./PinesFromFile.js";
 import BigWoodFromFile from "./BigWoodFromFile.js";
-import {Animation, AnimationAxis, AnimationType} from "../animation/Animation.js";
 
 export default class FullHotelFromFile extends THREE.Group {
 
-  constructor() {
-    super();
-    this.animations = [];
-    this.addParts();
-  }
+    constructor() {
+        super();
+        this.addParts();
+    }
 
-  addParts() {
-      const hotelBodyFromFile = new HotelBodyFromFile();
-      hotelBodyFromFile.updateMatrix();
-      //hotelBodyFromFile.addPhysics();
-      const smallWoodLeftFromFile = new SmallWoodLeftFromFile();
-      smallWoodLeftFromFile.name="smallWoodLeftFromFile";
-      //smallWoodLeftFromFile.addPhysics();
-      const smallWoodRightFromFile = new SmallWoodRightFromFile();
-      smallWoodRightFromFile.name = "smallWoodRightFromFile";
-      //smallWoodRightFromFile.addPhysics();
-      const gridBottomFromFile = new GridBottomFromFile();
-      const gridTopFromFile = new GridTopFromFile();
-      const strawFromFile = new StrawFromFile();
-      //strawFromFile.addPhysics();
-      const pinesFromFile = new PinesFromFile();
-     // pinesFromFile.addPhysics();
-      const bigWoodFromFile = new BigWoodFromFile();
-      //bigWoodFromFile.addPhysics();
+    addParts() {
+        const hotelBodyFromFile = new HotelBodyFromFile();
+        hotelBodyFromFile.updateMatrix();
+        //hotelBodyFromFile.addPhysics();
+        const smallWoodLeftFromFile = new SmallWoodLeftFromFile();
+        //smallWoodLeftFromFile.addPhysics();
+        const smallWoodRightFromFile = new SmallWoodRightFromFile();
+        //smallWoodRightFromFile.addPhysics();
+        const gridBottomFromFile = new GridBottomFromFile();
+        const gridTopFromFile = new GridTopFromFile();
+        const strawFromFile = new StrawFromFile();
+        //strawFromFile.addPhysics();
+        const pinesFromFile = new PinesFromFile();
+        // pinesFromFile.addPhysics();
+        const bigWoodFromFile = new BigWoodFromFile();
+        //bigWoodFromFile.addPhysics();
 
+        hotelBodyFromFile.position.set(10,20,5);
+        smallWoodLeftFromFile.position.set(10,20,5);
+        smallWoodRightFromFile.position.set(10,20,5);
+        gridBottomFromFile.position.set(10,20,5);
+        gridTopFromFile.position.set(10,20,5);
+        strawFromFile.position.set(10,20,5);
+        pinesFromFile.position.set(10,20,5);
+        bigWoodFromFile.position.set(10,20,5);
 
-      // ANOMATIONS
-      const bigWoodStackAnimation = new Animation(bigWoodFromFile, AnimationType.TRANSLATION, AnimationAxis.Z);
-      bigWoodStackAnimation.setAmount(20);
-      bigWoodStackAnimation.setSpeed(30);
-      bigWoodFromFile.linearAnimation = bigWoodStackAnimation;
-      this.animations.push(bigWoodStackAnimation);
-
-      const smallWoodStackLeftAnimation = new Animation(smallWoodLeftFromFile, AnimationType.TRANSLATION, AnimationAxis.Z);
-      smallWoodStackLeftAnimation.setAmount(7);
-      smallWoodStackLeftAnimation.setSpeed(30);
-      smallWoodLeftFromFile.linearAnimation = smallWoodStackLeftAnimation;
-      this.animations.push(smallWoodStackLeftAnimation);
-
-      const smallWoodStackRightAnimation = new Animation(smallWoodRightFromFile, AnimationType.TRANSLATION, AnimationAxis.Z);
-      smallWoodStackRightAnimation.setAmount(15);
-      smallWoodStackRightAnimation.setSpeed(30);
-      smallWoodRightFromFile.linearAnimation = smallWoodStackRightAnimation;
-      this.animations.push(smallWoodStackRightAnimation);
-
-      this.add(bigWoodFromFile);
-      this.add(gridTopFromFile);
-      this.add(gridBottomFromFile);
-      this.add(pinesFromFile);
-      this.add(strawFromFile);
-      this.add(smallWoodRightFromFile);
-      this.add(smallWoodLeftFromFile);
-      this.add(hotelBodyFromFile);
-}
+        this.add(bigWoodFromFile);
+        this.add(gridTopFromFile);
+        this.add(gridBottomFromFile);
+        this.add(pinesFromFile);
+        this.add(strawFromFile);
+        this.add(smallWoodRightFromFile);
+        this.add(smallWoodLeftFromFile);
+        this.add(hotelBodyFromFile);
+    }
 
     addPhysics() {
         const positions = [
@@ -92,6 +77,6 @@ export default class FullHotelFromFile extends THREE.Group {
             [7,8,6],
             [3,2,1]
         ];
-        window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
+        window.physics.addBox(this,3,30,50,15, 0, 0, 0, true);
     }
 }

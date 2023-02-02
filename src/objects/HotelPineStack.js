@@ -1,10 +1,4 @@
 import * as THREE from 'three';
-import * as TWEEN from 'tween';
-import CSG from 'csg';
-
-import {GridShader} from '../shaders/GridShader.js';
-
-import {Animation, AnimationType, AnimationAxis} from '../animation/Animation.js';
 import Pine from "./Pine.js";
 
 export default class HotelPineStack extends THREE.Group {
@@ -66,7 +60,6 @@ export default class HotelPineStack extends THREE.Group {
             [18,13,0],    // 5
             [0,13,0],    // 6
             [-3.5,-2,3.5],    // 7 x
-
         ];
         const indices = [
             [3, 2, 1, 0],
@@ -75,7 +68,6 @@ export default class HotelPineStack extends THREE.Group {
             [3, 7, 6, 2],
             [1, 2, 5, 6],
             [0, 4, 7, 3],
-
         ];
         window.physics.addConvexPolyhedron(this, 3, positions, indices, true);
     }

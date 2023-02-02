@@ -3,11 +3,6 @@ import * as TWEEN from 'tween';
 import CSG from 'csg';
 import HotelWoodSmall from './HotelWoodSmall.js';
 
-
-import {GridShader} from '../shaders/GridShader.js';
-
-import {Animation, AnimationType, AnimationAxis} from '../animation/Animation.js';
-
 export default class HotelWoodSmallStack extends THREE.Group {
 
     constructor() {
@@ -103,7 +98,6 @@ export default class HotelWoodSmallStack extends THREE.Group {
         const row7part3 = new HotelWoodSmall(0.5);
         row7part3.position.set(3.2, 10.4, 0.1);
         this.add(row7part3);
-
     }
 
     addPhysics() {

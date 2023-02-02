@@ -53,16 +53,17 @@ function main() {
     const fullHotelFromFile = new FullHotelFromFile();
     fullHotelFromFile.scale.set(0.85, 0.85, 0.85);
     fullHotelFromFile.updateMatrix();
-    fullHotelFromFile.position.set(-15, 21.3, 10);
+    fullHotelFromFile.position.set(-27 , -13, 10);
     fullHotelFromFile.rotation.set(hotelFromFileRotation[0], hotelFromFileRotation[1], hotelFromFileRotation[2]);
     fullHotelFromFile.addPhysics();
     window.scene.add(fullHotelFromFile);
+
 
     //HOTEL
     const fullHotel = new FullHotel();
     //fullHotel.scale.set(0.85, 0.85, 0.85);
     fullHotel.updateMatrix();
-    fullHotel.position.set(70, 20.6, -5);
+    fullHotel.position.set(58, -11, -5);
     fullHotel.rotation.set(hotelRotation[0], hotelRotation[1], hotelRotation[2]);
     fullHotel.addPhysics();
     window.scene.add(fullHotel);
@@ -103,6 +104,7 @@ function main() {
     spotLight.shadow.camera.far = 500;
     spotLight.shadow.bias = -0.001;
     window.scene.add(spotLight);
+    
 
     //gui.open();
     const gui = new DATGUI.GUI();

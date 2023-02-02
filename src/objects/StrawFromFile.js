@@ -21,7 +21,7 @@ export default class StrawFromFile extends THREE.Group {
           child.castShadow = true;
         }
       });
-      gltf.scene.position.set(0, -45, 0); // Shift loaded model down half its height
+      gltf.scene.position.set(0, -25, 0); // Shift loaded model down half its height
       thisStrawFromFile.add(gltf.scene);
       thisStrawFromFile.loadingDone = true;
     });

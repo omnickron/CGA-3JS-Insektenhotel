@@ -21,7 +21,7 @@ export default class GridTopFromFile extends THREE.Group {
           child.castShadow = true;
         }
       });
-      gltf.scene.position.set(0, -45, 0); // Shift loaded model down half its height
+      gltf.scene.position.set(0, -25, 0); // Shift loaded model down half its height
       thisGridTopFromFile.add(gltf.scene);
       thisGridTopFromFile.loadingDone = true;
     });
@@ -31,8 +31,6 @@ export default class GridTopFromFile extends THREE.Group {
     if (this.loadingDone === false) {
       window.setTimeout(this.addPhysics.bind(this), 100);
     } else {
-      //TODO: PHYSICS COLLIDER ANPASSEN
-      //window.physics.addCylinder(this, 5, 20, 10, 150, 12);
     }
   }
 }
