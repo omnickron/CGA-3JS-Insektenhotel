@@ -104,7 +104,7 @@ function main() {
     spotLight.shadow.camera.far = 500;
     spotLight.shadow.bias = -0.001;
     window.scene.add(spotLight);
-    
+
 
     //gui.open();
     const gui = new DATGUI.GUI();

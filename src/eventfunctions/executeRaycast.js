@@ -16,6 +16,7 @@ export function executeRaycast(event) {
       if (firstHit.children.length > 0) {
         firstHit.linearAnimation.toggleEndPosition();
       } else {
+        console.log(firstHit.parent.parent);
         firstHit.parent.parent.linearAnimation.toggleEndPosition();
       }
     } else if (firstHit.name === 'smallWoodStackLeft' ||

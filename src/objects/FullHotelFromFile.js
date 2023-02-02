@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {Animation, AnimationType, AnimationAxis} from '../animation/Animation.js';
 
 import HotelBodyFromFile from "./HotelBodyFromFile.js";
 import SmallWoodLeftFromFile from "./SmallWoodLeftFromFile.js";
@@ -13,6 +14,7 @@ export default class FullHotelFromFile extends THREE.Group {
 
     constructor() {
         super();
+        this.animations = [];
         this.addParts();
     }
 
@@ -41,6 +43,25 @@ export default class FullHotelFromFile extends THREE.Group {
         strawFromFile.position.set(10,20,5);
         pinesFromFile.position.set(10,20,5);
         bigWoodFromFile.position.set(10,20,5);
+
+        // ANOMATIONS
+        const bigWoodStackAnimation = new Animation(bigWoodFromFile, AnimationType.TRANSLATION, AnimationAxis.Z);
+        bigWoodStackAnimation.setAmount(20);
+        bigWoodStackAnimation.setSpeed(30);
+        bigWoodFromFile.linearAnimation = bigWoodStackAnimation;
+        this.animations.push(bigWoodStackAnimation);
+
+        const smallWoodStackLeftAnimation = new Animation(smallWoodLeftFromFile, AnimationType.TRANSLATION, AnimationAxis.Z);
+        smallWoodStackLeftAnimation.setAmount(7);
+        smallWoodStackLeftAnimation.setSpeed(30);
+        smallWoodLeftFromFile.linearAnimation = smallWoodStackLeftAnimation;
+        this.animations.push(smallWoodStackLeftAnimation);
+
+        const smallWoodStackRightAnimation = new Animation(smallWoodRightFromFile, AnimationType.TRANSLATION, AnimationAxis.Z);
+        smallWoodStackRightAnimation.setAmount(15);
+        smallWoodStackRightAnimation.setSpeed(30);
+        smallWoodRightFromFile.linearAnimation = smallWoodStackRightAnimation;
+        this.animations.push(smallWoodStackRightAnimation);
 
         this.add(bigWoodFromFile);
         this.add(gridTopFromFile);
